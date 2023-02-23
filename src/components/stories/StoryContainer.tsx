@@ -35,7 +35,7 @@ export default function StoryContainer({
       <div
         className={
           horizontal
-            ? "horizontal-scroll flex flex-row"
+            ? "horizontal-scroll flex flex-row gap-4"
             : "grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-md:px-3 gap-4"
         }
       >
