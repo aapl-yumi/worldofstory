@@ -1,0 +1,20 @@
+---
+import Header from "../components/Header.astro";
+import MapAndStories from "../components/stories/MapAndStories";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Stories"
+  description={"Discover dreams and stories to be inspired."}
+>
+  <main>
+    <Header
+      title="Read Stories"
+      description="Discover stories from all around the world by exploring the World Map. Click or tap on continents or countries and start discovering voices from our fellow dreamers."
+    />
+    <div class="w-full float-left">
+      <MapAndStories client:load />
+    </div>
+  </main>
+</MainLayout>

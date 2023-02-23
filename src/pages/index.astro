@@ -1,81 +1,228 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import MainLayout from "../layouts/MainLayout.astro";
+import SupporterCard from "../components/SupporterCard.astro";
+import HeroComponent from "../components/home/HeroComponent.astro";
+import MediaComponent from "../components/home/MediaComponent.astro";
+import MissionComponent from "../components/home/MissionComponent.astro";
+import ReadStoriesComponent from "../components/home/ReadStoriesComponent.astro";
+import ArrowButton from "../components/home/ArrowButton.astro";
+import TeamPick from "../components/home/TeamPick";
+import SupportersComponent from "../components/home/SupportersComponent.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<MainLayout
+  title="Home"
+  description={"A place where dreams and stories from 196+ countries meet."}
+>
+  <main class="overflow-hidden">
+    <div class="relative w-full mb-9 mt-20 overflow-hidden">
+      <HeroComponent />
+    </div>
+    <div class="section-container">
+      <MediaComponent />
+    </div>
+    <div class="h-24 w-full"></div>
+    <svg
+      viewBox="0 0 1440 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style="width: 100%; height: auto; float: left;"
+    >
+      <path
+        d="M1069.47 0.861995C1214.91 -3.87321 1343.9 12.083 1440 19.9575V80H0V40.431V18.3333C24.9025 24.6985 100.764 32.0599 175.989 43.5808C269.506 57.9033 320 58.2353 407.5 58.2353C495 58.2353 594 55.4118 687.5 43.3333C781 31.2549 800.223 27.4383 844.847 19.9575C889.471 12.4767 980.04 3.77374 1069.47 0.861995Z"
+        fill="var(--background-light)"></path>
+    </svg>
+    <div class="section-container">
+      <MissionComponent />
+    </div>
+    <svg
+      viewBox="0 0 1440 81"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style="width: 100%; height: auto; float: left; margin-bottom: 36px;"
+    >
+      <path
+        d="M370.529 80.1272C225.094 84.9216 96.1003 68.7659 0 60.7931V0H1440V40.0636V62.4375C1415.1 55.9928 1339.24 48.5394 1264.01 36.8744C1170.49 22.373 1120 22.0368 1032.5 22.0368C945 22.0368 846 24.8956 752.5 37.125C659 49.3544 639.777 53.2188 595.153 60.7931C550.529 68.3674 459.96 77.1791 370.529 80.1272Z"
+        fill="var(--background-light)"></path>
+    </svg>
+    <div class="section-container my-10">
+      <ReadStoriesComponent />
+    </div>
+    <div class="section-container">
+      <div class="w-[85%] max-md:w-full max-md:px-5 max-w-screen-2xl mx-auto">
+        <h2 class="w-full text-left text-3xl font-bold my-4">{"Team Pick"}</h2>
+        <TeamPick client:idle />
+        <ArrowButton label="Read more stories" link="/stories" />
+      </div>
+    </div>
+  </main>
+  <svg
+    viewBox="0 0 1440 76"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style="width: 100%; height: auto; float: left; margin-top: 100px;"
+  >
+    <path
+      d="M1440 76H0V68.3664L273 39.6106C273 39.6106 540.773 0.0671266 720 0C899.988 -0.0674116 1169 39.6106 1169 39.6106L1440 67.0333V76Z"
+      fill="var(--background-light)"></path>
+  </svg>
+  <div class="section-container light">
+    <SupportersComponent />
+  </div>
+  <div class="theme-music-container mt-5 float-left w-full">
+    <div class="theme-music">
+      <div class="left">
+        <img src="/assets/images/theme-music.png" alt="Image of artist Ai" />
+      </div>
+      <div class="middle">
+        <h3>We have a dream</h3>
+        <h4>Ai</h4>
+        <p>Our theme song from record-breaking artist Ai.</p>
+      </div>
+      <div class="right">
+        <a href="https://lnk.to/aidreamdg"></a>
+        <p>Listen from preferred service</p>
+      </div>
+    </div>
+  </div>
+</MainLayout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+<script lang="js">
+  let missionReadMore = document.getElementById("mission-read-more");
+  let missionReadMoreButton = document.getElementById(
+    "mission-read-more-button"
+  );
+  missionReadMoreButton.addEventListener("click", function () {
+    if (missionReadMoreButton.classList.contains("active")) {
+      missionReadMoreButton.innerHTML = "Read more...";
+      missionReadMoreButton.classList.remove("active");
+      missionReadMore.style.display = "none";
+    } else {
+      missionReadMoreButton.innerHTML = "Read less";
+      missionReadMoreButton.classList.add("active");
+      missionReadMore.style.display = "block";
+    }
+  });
+
+  let locations = [];
+  for (let i = 1; i <= 10; i++) {
+    locations.push(document.getElementById("location-" + i));
+  }
+  setInterval(() => {
+    let random = [];
+    while (random.length < 3) {
+      let r = Math.floor(Math.random() * 10);
+      if (random.indexOf(r) === -1) random.push(r);
+    }
+    random.forEach((r) => {
+      locations[r].classList.add("scale");
+      setTimeout(() => {
+        locations[r].classList.remove("scale");
+      }, 2000);
+    });
+  }, 2000);
+</script>
+<style lang="scss">
+  main {
+    margin: auto;
+  }
+  .read-more {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .space-between {
+    height: 100px;
+    width: 100%;
+  }
+  .section-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+
+    &.light {
+      background-color: var(--background-light);
+    }
+
+    &.col {
+      flex-direction: column;
+    }
+  }
+  .theme-music {
+    margin: auto;
+    margin-top: 100px;
+    height: 208px;
+    width: 630px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--background-light);
+    border-radius: 30px;
+    padding: 24px;
+    img {
+      height: auto;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      width: 30%;
+    }
+    a {
+      height: 64px;
+      width: 64px;
+      border-radius: 50%;
+      background-color: rgb(var(--color));
+      position: relative;
+      &::after {
+        content: "";
+        display: inline-block;
+        position: relative;
+        top: 50%;
+        left: 3px;
+        transform: translateY(-50%);
+        border-style: solid;
+        border-width: 12px 0 12px 16px;
+        border-color: transparent transparent transparent rgb(var(--background));
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .space-between {
+      height: 50px;
+    }
+    .theme-music-container {
+      width: 100%;
+      float: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .theme-music {
+      width: 300px;
+      height: auto;
+      margin: 0 auto;
+      margin-top: 100px;
+      flex-direction: column;
+      .left {
+        height: 150px;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      div {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      a {
+        margin-bottom: 2rem;
+      }
+    }
+  }
 </style>

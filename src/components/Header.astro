@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  nobg?: boolean;
+  nomargin?: boolean;
+}
+
+const { title, description, nobg, nomargin } = Astro.props;
+---
+
+<div class={(nobg ? "header nobg " : "header ") + (nomargin ? "nomargin" : "")}>
+  <h1 set:html={title} />
+  <h2 set:html={description} />
+</div>
+<svg
+  viewBox="0 0 1440 81"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  style="float: left; margin-bottom: 30px; width: 100%;"
+  class={nobg ? "nobg" : ""}
+>
+  <path
+    d="M370.529 80.1272C225.094 84.9216 96.1003 68.7659 0 60.7931V0H1440V40.0636V62.4375C1415.1 55.9928 1339.24 48.5394 1264.01 36.8744C1170.49 22.373 1120 22.0368 1032.5 22.0368C945 22.0368 846 24.8956 752.5 37.125C659 49.3544 639.777 53.2188 595.153 60.7931C550.529 68.3674 459.96 77.1791 370.529 80.1272Z"
+    fill="var(--background-light)"></path>
+</svg>
+<style lang="scss">
+  .header {
+    text-align: center;
+    padding-top: 100px;
+    background-color: var(--background-light);
+    float: left;
+    width: 100%;
+  }
+  div {
+    &.nobg {
+      background-color: transparent;
+    }
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+    }
+    h2 {
+      width: 55%;
+      font-size: 16px;
+      margin: 36px auto;
+    }
+  }
+  svg.nobg {
+    display: none;
+  }
+  .nomargin {
+    padding-top: 0;
+    margin-top: 0;
+  }
+  @media screen and (max-width: 768px) {
+    .header {
+      padding-top: 80px;
+    }
+    div {
+      h1 {
+        font-size: 24px;
+        margin-bottom: 0;
+      }
+      h2 {
+        width: 90%;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+</style>

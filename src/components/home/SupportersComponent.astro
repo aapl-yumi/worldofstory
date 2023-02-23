@@ -1,0 +1,43 @@
+---
+import SupporterCard from "../SupporterCard.astro";
+import ArrowButton from "./ArrowButton.astro";
+---
+
+<div class="flex justify-center items-center flex-col text-center max-md:px-5">
+  <h2 class="text-3xl font-bold mt-10">{"Supporters"}</h2>
+  <h3 class="w-[85%] max-w-screen-2xl max-md:w-full mx-auto text-xl my-6">
+    Meet our amazing supporters from around the world! From world leaders to
+    artists, we have diverse supporters who are changing the world.
+  </h3>
+  <div
+    class="grid grid-cols-3 max-md:grid-cols-1 w-[85%] max-w-screen-2xl mx-auto"
+  >
+    <div class="mx-auto">
+      <SupporterCard
+        img="1"
+        name="Muhammad Yunus"
+        title="Founder of Grameen Bank"
+        title2="2006 Nobel Peace Laureate"
+        quote="Use your immagination if you want to make something happen. This book is a great example of how humankind can make impossible things happen through imagination! Young people must imagine the world they wish to live in. Imagination will create the future of mankind on this world."
+      />
+    </div>
+    <div class="desktop">
+      <SupporterCard
+        img="6"
+        name="Mary Robinson"
+        title="Former President of Ireland"
+        title2="Chair, The Elders"
+        quote="The Sustainable Development Goals (SDGs) are the blueprint to achieving a healthier, fairer and more equal future for all. This book captures the vital voices and experiences of young leaders as they dare to dream of this better world that we need to create together to reach the goals."
+      />
+    </div>
+    <div class="desktop">
+      <SupporterCard
+        img="17"
+        name="Ai"
+        title="Artist"
+        quote="A world where everyone can dream! So awesome! And getting to know each other and help each other? That’s awesome, too! I feel as if this book can connect us all, from each dreamer in the book to each of you reading, and maybe even help heal the scars in our society. I hope we can make our new future into something we are truly excited for. Let’s dream!!!!"
+      />
+    </div>
+  </div>
+  <ArrowButton label="View more supporters" link="/supporters" />
+</div>

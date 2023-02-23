@@ -1,0 +1,141 @@
+<div class="mission">
+  <div class="left">
+    <h2>{"Mission"}</h2>
+    <img
+      src="/assets/images/wehaveadreambook.min.png"
+      alt="WE HAVE A DREAM Book held in hand."
+    />
+    <h3>
+      <strong>
+        “We want to create a space where we can truly learn from each other on a
+        global scale - as if this world is one big school.”
+      </strong>
+      <br /><br />
+      It all started with one simple question on social media, “What is your dream?”<br
+      /><br />Hundreds of DMs later, they soon became a book called <a
+        href="https://linktr.ee/WeHaveaDream201"
+        style="display: inline-block;"
+        ><span style="color: rgb(var(--accent)); text-decoration: underline;"
+          >WE HAVE A DREAM</span
+        ></a
+      > - filled with dreams, passion and hope from all over the world. <span
+        id="mission-read-more"
+        style="display: none;"
+        >We learned that each story carried the power to inspire and dream on no
+        matter the size of their dreams. What’s more, that anyone and everyone
+        can be a role model for everyone despite their age, nationality and
+        backgrounds. One dreamer’s dream inspired another, and another...
+        generating new dreamer stories and eventually became a cycle.<br /><br
+        />There are over 200 countries and over 8 billion people in this world.
+        We want to create a space where we can truly learn from each other on a
+        global scale - as if this world is one big school.<br /><br />We dream
+        to create a platform where stories gather from all over the world.
+        Stories surrounding dream, love, and family can become a shared language
+        or a global language even more so than English perhaps. We aim to create
+        more of these shared languages in this world where people can share
+        their stories and connect.</span
+      ><button class="read-more" id="mission-read-more-button"
+        >Read more...</button
+      >
+    </h3>
+    <a rel="prefetch" href="/team">
+      {"Meet the team"}
+      <svg
+        style="margin-left: 7px;"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M11 19V13H2V11H11V5L22 12L11 19Z" fill="currentColor"></path>
+      </svg>
+    </a>
+  </div>
+  <div style="width: 50%;" class="right">
+    <img
+      src="/assets/images/wehaveadreambook.min.png"
+      alt="WE HAVE A DREAM Book held in hand."
+    />
+  </div>
+</div>
+<style lang="scss">
+  .mission {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: var(--background-light);
+    float: left;
+    padding: 100px 24px;
+    padding-left: 80px;
+    .left {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      margin-left: 60px;
+      margin-right: 40px;
+      text-align: center;
+      img {
+        display: none;
+      }
+      p {
+        font-size: 16px;
+        padding: 0 56px;
+      }
+      h2 {
+        font-size: 40px;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+    }
+    img {
+      width: 100%;
+      box-shadow: -20px 20px rgb(var(--accent));
+    }
+    a {
+      text-align: right;
+      font-size: 16px;
+      margin-top: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      color: rgb(var(--color));
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      &:hover,
+      &:focus-within {
+        filter: brightness(0.8);
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .mission {
+      padding: 30px 30px;
+      .left {
+        width: 90%;
+        margin: auto;
+        img {
+          display: block;
+          margin-bottom: 50px;
+          transform: translateX(10px);
+        }
+        p {
+          font-size: 14px;
+          padding: 0 20px;
+        }
+        a {
+          font-size: 16px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+      }
+      .right {
+        display: none;
+      }
+    }
+  }
+</style>

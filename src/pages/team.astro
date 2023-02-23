@@ -1,0 +1,163 @@
+---
+import Header from "../components/Header.astro";
+import TeamCard from "../components/TeamCard.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+
+interface TeamCardProps {
+  flipped?: boolean;
+  img: string;
+  name: string;
+  title: string;
+  message: string;
+  twitter?: string;
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
+  tiktok?: string;
+  github?: string;
+  website?: string;
+}
+
+const teamInfo: TeamCardProps[] = [
+  {
+    flipped: true,
+    img: "taichi",
+    name: "Taichi Ichikawa",
+    title:
+      "Founder of WORLD OF STORIES,\nCEO of <a href='https://www.worldroad.org'>WORLD ROAD</a>,\nAuthor of “WE HAVE A DREAM”,\nOne Young World Ambassador,\n<span>Kindness Leadership, Leading Lights,</span>\nDiscovery Channel PROJECT HOPE Host",
+    message:
+      "Hello world! My dream is to build the world into a single school. Hope you enjoy this web space to learn from each other on earth-scale!",
+    instagram: "taichi_905",
+    linkedin: "taichi-ichikawa-27a3b970",
+    facebook: "taichi.ichikawa.5",
+  },
+  {
+    img: "miyu",
+    name: "Miyu Ando",
+    title:
+      "Bilingual UI/UX designer\nContent writer\nOne Young World Ambassador",
+    message:
+      "Hello everyone! I’m truly grateful to be a part of this amazing project which brings not only interesting stories from around the world, but a connection with one another on a global scale.\nI am definitely one of many who’s been inspired by all the stories  here and felt the sense of hopefulness and light after reading them.\nNo matter the size of our dreams, or even if we can’t think of one at the moment, or even if it changes over time, there’s no pressure! I hope you get to enjoy a glimpse of dreams and life from stories around the world and please don’t hesitate to connect with us!",
+    linkedin: "miyu-ando-692896117",
+    facebook: "miyu.ando.92",
+  },
+  {
+    img: "yumi",
+    name: "Yumi",
+    title: "Developer",
+    message:
+      "Hello everyone! I’m built this website! I’m so happy to be a part of this project. I hope you enjoy reading stories from around the world! If you find any issues, hit me up! :)",
+    twitter: "aapl_yumi",
+    website: "https://yumi.to/",
+  },
+];
+---
+
+<MainLayout title="Team" description={"Team and recruit"}>
+  <main>
+    <Header title="Meet the Team" description="" />
+    <div class="team-recruit">
+      <div class="left">
+        <h2>We're looking for team members</h2>
+        <p>
+          We are currently looking for members who can together create this
+          space accessible for everyone! Hence we are looking for the following
+          position.
+        </p>
+        <p>
+          <strong>Content Translator</strong> for either one of the following languages:
+          <br />
+          Japanese, French, Spanish, and your language.
+        </p>
+        <p>
+          To apply, please send us a message from the <a href="/contact"
+            >contact page</a
+          >.
+        </p>
+      </div>
+      <div class="right">
+        <img
+          src="/assets/images/hug.min.png"
+          alt="A heart held with two hands"
+          class="on-dark-invert"
+        />
+      </div>
+    </div>
+    <div class="members">
+      {
+        teamInfo.map((member) => {
+          return (
+            <TeamCard
+              flipped={member.flipped}
+              img={member.img}
+              name={member.name}
+              title={member.title}
+              message={member.message}
+              twitter={member.twitter}
+              instagram={member.instagram}
+              linkedin={member.linkedin}
+              facebook={member.facebook}
+              tiktok={member.tiktok}
+              github={member.github}
+              website={member.website}
+            />
+          );
+        })
+      }
+    </div>
+  </main>
+</MainLayout>
+<style lang="scss">
+  .team-recruit {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    margin: 40px auto;
+    border: 1px solid #eaeaea;
+    border-radius: 40px;
+    a,
+    a:visited {
+      color: inherit;
+    }
+    a:hover,
+    a:focus {
+      filter: brightness(0.8);
+    }
+    .left {
+      width: 60%;
+      margin: 32px;
+      h2 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 24px;
+      }
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        margin: 16px 0;
+      }
+    }
+    .right {
+      display: flex;
+      width: 40%;
+      justify-content: center;
+      align-items: center;
+      margin-right: 16px;
+      img {
+        height: auto;
+        width: 90%;
+      }
+    }
+  }
+  main {
+    margin: auto;
+  }
+  .members {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+  }
+</style>

@@ -1,0 +1,127 @@
+---
+interface Props {
+  num: string;
+  title: string;
+  hook: string;
+  description: string;
+  image: string;
+  flipped?: boolean;
+}
+
+const { num, title, hook, description, image, flipped } = Astro.props;
+---
+
+<div class={"card " + (flipped ? "flipped" : "")}>
+  <div class="image">
+    <img src={"/assets/images/share/" + num + ".min.png"} alt={image} />
+  </div>
+  <p class="num">0{num}</p>
+  <div class="details">
+    <h2>{title}</h2>
+    <p class="hook">{hook}</p>
+    <p class="description">{description}</p>
+  </div>
+</div>
+<style lang="scss">
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+  }
+  .flipped {
+    flex-direction: row;
+  }
+  .image {
+    width: 55%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .num {
+    position: absolute;
+    right: 45%;
+    top: 0;
+    left: 0;
+    font-size: 180px;
+    font-weight: 700;
+    color: #e0dede;
+  }
+  .flipped .num {
+    transform: translateX(105%);
+  }
+  .details {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 45%;
+    height: 100%;
+    padding: 1rem;
+    text-align: center;
+    h2 {
+      font-size: 48px;
+      font-weight: 800;
+      color: rgba(var(--accent));
+      text-transform: uppercase;
+      margin: 1em 0;
+    }
+  }
+  .hook {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 1em 0;
+  }
+  .description {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  @media (prefers-color-scheme: dark) {
+    .num {
+      color: #2a2828;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .card {
+      flex-direction: column;
+      position: relative;
+    }
+    .image {
+      width: 100%;
+      margin-top: 64px;
+    }
+    .num {
+      position: absolute;
+      font-size: 64px;
+      top: 0;
+    }
+    .flipped .num {
+      transform: translateX(0%);
+      left: 50%;
+    }
+    .details {
+      width: 100%;
+      h1 {
+        position: absolute;
+        font-size: 20px;
+        margin: 0;
+        top: 50px;
+      }
+    }
+    .flipped h1 {
+      left: 50%;
+    }
+    .hook {
+      font-size: 20px;
+    }
+    .description {
+      font-size: 14px;
+    }
+  }
+</style>

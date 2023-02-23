@@ -1,0 +1,204 @@
+---
+import { Icon } from "astro-icon";
+export interface Props {
+  flipped?: boolean;
+  img: string;
+  name: string;
+  title: string;
+  message: string;
+  twitter?: string;
+  facebook?: string;
+  instagram?: string;
+  linkedin?: string;
+  tiktok?: string;
+  github?: string;
+  website?: string;
+}
+
+const {
+  flipped,
+  img,
+  name,
+  title,
+  message,
+  twitter,
+  facebook,
+  instagram,
+  linkedin,
+  tiktok,
+  github,
+  website,
+} = Astro.props;
+---
+
+<div class={flipped ? "card flipped team-card" : "card team-card"}>
+  <img
+    src={"/assets/images/members/" + img + ".min.png"}
+    alt={"Photo of " + name}
+  />
+  <div class="bio">
+    <h1>{name}</h1>
+    <h2 class="title" set:html={title} />
+    <p class="message">{message}</p>
+    <div class="socials">
+      {
+        website ? (
+          <a target="_blank" href={website}>
+            <iconify-icon icon="dashicons:admin-site-alt3" />
+          </a>
+        ) : null
+      }
+      {
+        twitter ? (
+          <a target="_blank" href={"https://twitter.com/" + twitter}>
+            <iconify-icon icon="mdi:twitter" />
+          </a>
+        ) : null
+      }
+      {
+        facebook ? (
+          <a target="_blank" href={"https://www.facebook.com/" + facebook}>
+            <iconify-icon icon="mdi:facebook" />
+          </a>
+        ) : null
+      }
+      {
+        instagram ? (
+          <a target="_blank" href={"https://www.instagram.com/" + instagram}>
+            <iconify-icon icon="ph:instagram-logo-fill" />
+          </a>
+        ) : null
+      }
+      {
+        linkedin ? (
+          <a target="_blank" href={"https://www.linkedin.com/in/" + linkedin}>
+            <iconify-icon icon="ci:linkedin" />
+          </a>
+        ) : null
+      }
+      {
+        tiktok ? (
+          <a target="_blank" href={"https://www.tiktok.com/@" + tiktok}>
+            <iconify-icon icon="ic:baseline-tiktok" />
+          </a>
+        ) : null
+      }
+    </div>
+  </div>
+  <style is:inline>
+    .team-card a,
+    .team-card a:visited {
+      color: rgb(var(--accent));
+    }
+  </style>
+  <style lang="scss">
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin: 60px 0;
+      img {
+        width: 40%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        box-shadow: -20px 20px rgb(var(--accent));
+      }
+      .bio {
+        width: 60%;
+        text-align: center;
+        span {
+          text-decoration: underline;
+        }
+        h1 {
+          font-size: 32px;
+          font-weight: 800;
+          margin-left: 20%;
+        }
+        h2.title {
+          font-size: 20px;
+          font-weight: 400;
+          white-space: pre-line;
+          margin-left: 20%;
+        }
+        p {
+          &.message {
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 20px;
+            word-wrap: break-word;
+            width: 80%;
+            margin: 20px auto;
+            margin-left: 20%;
+          }
+        }
+        .socials {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          margin-top: 1rem;
+          margin-left: 20%;
+          font-size: 32px;
+          a,
+          a:visited {
+            color: rgb(var(--color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          a:hover {
+            color: rgb(var(--accent));
+          }
+        }
+      }
+      &.flipped {
+        flex-direction: row-reverse;
+        .bio {
+          h1,
+          h2.title,
+          p.message,
+          .socials {
+            margin: 20px auto;
+            margin-right: 20%;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        margin: 40px 0;
+        &.flipped {
+          flex-direction: column;
+        }
+        img {
+          width: 100%;
+          margin-bottom: 2rem;
+          transform: translateX(10px);
+        }
+        .bio {
+          width: 100%;
+          padding: 1rem 0;
+          text-align: center;
+          h1 {
+            font-size: 20px;
+            margin: 20px 0;
+          }
+          p {
+            &.title {
+              font-size: 16px;
+            }
+            &.message {
+              font-size: 14px;
+              margin: 20px 0;
+            }
+          }
+        }
+      }
+    }
+  </style>
+</div>

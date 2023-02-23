@@ -1,0 +1,29 @@
+<div class="media w-full h-32 mb-9">
+  <div class="horizontal-scroll h-full">
+    <img
+      class="max-w-none h-full"
+      src="/assets/images/media.min.png"
+      alt="Media"
+    />
+  </div>
+  <h3 class="w-full text-center font-bold text-2xl font-serif">
+    {"Featured Media"}
+  </h3>
+</div>
+<script>
+  let media = document.querySelector(
+    ".media .horizontal-scroll img"
+  ) as HTMLImageElement;
+  let container = document.querySelector(
+    ".media .horizontal-scroll"
+  ) as HTMLDivElement;
+  let h = 0;
+  window.addEventListener("scroll", function () {
+    h = h == 0 ? media.getBoundingClientRect().top + 50 : h;
+    let d = media.width - container.offsetWidth;
+    let r = d / h;
+    if (window.pageYOffset > 0) {
+      media.style.transform = "translateX(-" + window.pageYOffset * r + "px)";
+    }
+  });
+</script>

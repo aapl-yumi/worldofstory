@@ -1,0 +1,65 @@
+---
+import FooterSocials from "./FooterSocials.astro";
+---
+
+<svg
+  viewBox="0 0 1440 80"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  style="width: 100%; height: auto; float: left; margin-top: 5em;"
+>
+  <path
+    d="M370.529 0.861995C225.094 -3.87321 96.1003 12.083 0 19.9575V80H1440V40.431V18.3333C1415.1 24.6985 1339.24 32.0599 1264.01 43.5808C1170.49 57.9033 1120 58.2353 1032.5 58.2353C945 58.2353 846 55.4118 752.5 43.3333C659 31.2549 639.777 27.4383 595.153 19.9575C550.529 12.4767 459.96 3.77374 370.529 0.861995Z"
+    fill="var(--background-light)"></path>
+</svg>
+<footer>
+  <p class="text-2xl">WORLD OF STORY</p>
+  <p class="px-3">
+    Projected by <a href="https://www.worldroad.org/">WORLD ROAD inc.</a> with lots
+    of love and hope.
+  </p>
+  <FooterSocials />
+</footer>
+<style lang="scss">
+  footer {
+    padding-top: 3em;
+    padding-bottom: 5em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-light);
+    float: left;
+  }
+  h1 {
+    font-size: 24px;
+    margin-bottom: 0.5em;
+    font-weight: normal;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 2em;
+  }
+  a,
+  a:visited {
+    color: rgb(var(--color));
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus-within {
+    filter: brightness(80%);
+  }
+
+  @media screen and (max-width: 768px) {
+    footer {
+      padding-bottom: 3em;
+    }
+    h1 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+</style>

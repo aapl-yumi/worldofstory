@@ -1,0 +1,234 @@
+---
+import Header from "../components/Header.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Contact" description={"Stay in touch!"}>
+  <main>
+    <Header
+      title="Contact"
+      description="For inquiries, please fill in the below form and send us a message!"
+      nobg={true}
+    />
+    <div style="float: left; width: 100%;">
+      <div class="form">
+        <img
+          src="/assets/images/contact.min.png"
+          alt="Grid image of 6 diverse individuals."
+          class="desktop-image"
+        />
+        <img
+          src="/assets/images/cover.min.png"
+          alt="Grid image of 6 diverse individuals."
+          class="mobile-image"
+        />
+        <form
+          action="https://api.worldroad.org/contact.php"
+          method="POST"
+          id="contact-form"
+        >
+          <label for="name">First Name<span>*</span></label>
+          <input
+            type="text"
+            name="fname"
+            placeholder="Your First Name"
+            id="fname"
+            required
+          />
+          <label for="name">Last Name<span>*</span></label>
+          <input
+            type="text"
+            name="lname"
+            placeholder="Your Last Name"
+            id="lname"
+            required
+          />
+          <label for="email">Email<span>*</span></label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            id="email"
+            required
+          />
+          <label for="email"
+            >WhatsApp / Messenger / Instagram (for faster communication)</label
+          >
+          <input
+            type="text"
+            name="social-media"
+            placeholder="Your Social Media (e.g. @worlddreamproject)"
+            id="social-media"
+          />
+          <label for="message">Message<span>*</span></label>
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            id="message"
+            required></textarea>
+          <p><span>*</span>Required Fields</p>
+          <button name="submit" type="submit" value="Submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</MainLayout>
+<script lang="js">
+  if (window.location.href.indexOf("?success=true") > -1) {
+    alert("Thank you for your message! We will get back to you soon.");
+  } else if (window.location.href.indexOf("?success=false") > -1) {
+    alert("Oops! Something went wrong. Please try again.");
+  }
+
+  var validate = require("validate.js");
+  const constraints = {
+    fname: {
+      presence: { allowEmpty: false },
+      length: {
+        minimum: 2,
+        message: "must be at least 2 characters",
+      },
+    },
+    lname: {
+      presence: { allowEmpty: false },
+      length: {
+        minimum: 2,
+        message: "must be at least 2 characters",
+      },
+    },
+    email: {
+      presence: { allowEmpty: false },
+      email: true,
+    },
+    message: {
+      presence: { allowEmpty: false },
+      length: {
+        minimum: 10,
+        message: "must be at least 10 characters",
+      },
+    },
+  };
+  const form = document.getElementById("contact-form");
+  form.addEventListener(
+    "submit",
+    function (event) {
+      const formValues = {
+        fname: form.elements.fname.value,
+        lname: form.elements.lname.value,
+        email: form.elements.email.value,
+        message: form.elements.message.value,
+      };
+      const errors = validate(formValues, constraints);
+      if (errors) {
+        event.preventDefault();
+        const errorMessage = Object.values(errors)
+          .map(function (fieldValues) {
+            return fieldValues.join(", ");
+          })
+          .join("\n");
+        alert(errorMessage);
+      }
+    },
+    false
+  );
+</script>
+<style lang="scss">
+  main {
+    margin: auto;
+  }
+  .form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1000px;
+    background-color: var(--background-light);
+    span {
+      color: red;
+    }
+    img {
+      width: 30%;
+      height: 50%;
+      margin: 0 auto;
+      &.mobile-image {
+        display: none;
+      }
+    }
+    form {
+      width: 70%;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      label {
+        width: 70%;
+        color: var(--color);
+        margin: 0.5rem 0 0 0;
+      }
+      input,
+      textarea {
+        width: 70%;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 5px;
+        margin: 0.5rem 0;
+        background-color: rgb(var(--input-background));
+        font-family: Inter, sans-serif;
+        color: rgb(var(--color));
+        &::placeholder {
+          color: rgb(var(--input-placeholder-color));
+        }
+      }
+      p {
+        width: 70%;
+      }
+      textarea {
+        height: 100px;
+      }
+      button {
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 10px;
+        margin: 0.5rem 0;
+        background-color: rgb(var(--color));
+        color: rgb(var(--background));
+        font-weight: 600;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .form {
+      flex-direction: column;
+      background-color: transparent;
+      img {
+        width: 100%;
+        height: 100%;
+        &.mobile-image {
+          display: block;
+        }
+        &.desktop-image {
+          display: none;
+        }
+      }
+      form {
+        width: 90%;
+        margin-top: 20px;
+        font-size: 14px;
+        label {
+          width: 100%;
+        }
+        input,
+        textarea,
+        p {
+          width: 100%;
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,139 @@
+---
+export interface Props {
+  name: string;
+  img: string;
+  title: string;
+  title2?: string;
+  quote: string;
+}
+
+const { name, img, title, title2, quote } = Astro.props;
+
+let isImage = true;
+// check if img is youtube link, if it is then
+if (img.includes("youtube")) {
+  isImage = false;
+}
+---
+
+<div class="card">
+  {
+    isImage ? (
+      <img
+        src={"/assets/images/supporters/" + img + ".min.png"}
+        alt={"Photo of" + name}
+      />
+    ) : (
+      <div class="iframe-container">
+        <iframe
+          title="YouTube video player"
+          allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          src={img}
+          style="border: none;"
+        />
+      </div>
+    )
+  }
+  <div class="bio">
+    <h2 class="name">{name}</h2>
+    <h3 class="title" set:html={title} />
+    {title2 ? <p class="title">{title2}</p> : null}
+    <p class="quote" set:html={quote} />
+  </div>
+</div>
+<script>
+  let readMoreContent = document.querySelector(".read-more-content")!;
+  if (readMoreContent) {
+    (readMoreContent as HTMLSpanElement).style.display = "none";
+    let readMoreButton = document.querySelector(".read-more-button")!;
+    readMoreButton.addEventListener("click", () => {
+      if ((readMoreContent as HTMLSpanElement).style.display === "none") {
+        (readMoreContent as HTMLSpanElement).style.display = "inline";
+        readMoreButton.innerHTML = "Read less";
+      } else {
+        (readMoreContent as HTMLSpanElement).style.display = "none";
+        readMoreButton.innerHTML = "Read more...";
+      }
+    });
+  }
+</script>
+<style is:inline>
+  .card button:hover,
+  .card button:focus {
+    font-weight: bold;
+    color: rgb(var(--accent));
+  }
+</style>
+<style lang="scss">
+  .read-more-button {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    text-align: center;
+    overflow-x: hidden;
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: 50% 0;
+      transform: scale(1.01);
+    }
+    .iframe-container {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+      }
+    }
+    .bio {
+      margin: 20px 0;
+      h2.name {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      h3.title {
+        font-size: 16px;
+        font-weight: 300;
+        margin: 5px 0;
+      }
+      p {
+        &.quote {
+          font-size: 16px;
+          font-weight: 300;
+          font-style: italic;
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .card {
+      width: 80vw;
+      max-width: 330px;
+      h2.name {
+        font-size: 16px;
+      }
+      h3.title {
+        font-size: 14px;
+      }
+      p {
+        &.quote {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+</style>

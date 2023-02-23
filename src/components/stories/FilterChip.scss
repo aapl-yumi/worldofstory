@@ -1,0 +1,38 @@
+.filter-chip {
+  padding: 16px 16px;
+  backdrop-filter: blur(2px);
+  font-size: 16px;
+  border-radius: 32px;
+  white-space: nowrap;
+  background-color: rgb(var(--background));
+  color: rgb(var(--color));
+  border: 1px solid rgb(var(--color));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  svg {
+    display: none;
+  }
+
+  &:hover {
+    background-color: rgb(var(--accent));
+  }
+
+  &.active {
+    background-color: rgb(var(--color));
+    color: rgb(var(--background));
+    border-color: rgb(var(--background));
+
+    svg {
+      display: block;
+      margin-left: 4px;
+    }
+  }
+}

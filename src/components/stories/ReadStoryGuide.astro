@@ -1,0 +1,195 @@
+<div class="guide">
+  <div class="close">
+    <div></div>
+    <p style="color: #151414;">Close</p>
+    <div></div>
+  </div>
+  <div class="gif">
+    <img src="/assets/images/guide/map.gif" alt="gif" />
+    <img
+      style="display: none;"
+      src="/assets/images/guide/filter.gif"
+      alt="gif"
+    />
+    <img
+      style="display: none;"
+      src="/assets/images/guide/search.gif"
+      alt="gif"
+    />
+  </div>
+  <div class="header">
+    <h3>How to Find Stories</h3>
+  </div>
+  <div class="description">
+    <ol>
+      <li class="active">
+        <button> From Map</button>
+      </li>
+      <li>
+        <button>From Filter</button>
+      </li>
+      <li>
+        <button>From Search</button>
+      </li>
+    </ol>
+    <p>
+      You can zoom in and out of the map and click on countries to find stories.
+    </p>
+  </div>
+  <button class="next"> Next</button>
+</div>
+<script>
+  let i = 1;
+  let interrupted = false;
+  const body = document.querySelector("body") as HTMLBodyElement;
+  const mapGuide = document.querySelector(".guide") as HTMLDivElement;
+  const next = mapGuide.querySelector(".next") as HTMLButtonElement;
+  const gif = mapGuide.querySelectorAll(
+    ".gif img"
+  ) as NodeListOf<HTMLImageElement>;
+  const li = mapGuide.querySelectorAll("ol li") as NodeListOf<HTMLLIElement>;
+  const p = mapGuide.querySelector(".description p") as HTMLParagraphElement;
+  const descriptions = [
+    "You can zoom in and out of the map and click on countries to find stories.",
+    "You can pick from continents or topics you are interested in!",
+    "You can type in any keywords such as country or names!",
+  ];
+  next.addEventListener("click", () => {
+    if (i < 3) {
+      gif[i - 1].style.display = "none";
+      gif[i].style.display = "block";
+      li[i - 1].classList.remove("active");
+      li[i].classList.add("active");
+      p.innerHTML = descriptions[i];
+      i++;
+    } else {
+      onClose();
+    }
+    if (i === 3) {
+      next.innerHTML = "Finish";
+    } else {
+      next.innerHTML = "Next";
+    }
+  });
+
+  li.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      interrupted = true;
+      gif[i - 1].style.display = "none";
+      gif[index].style.display = "block";
+      li[i - 1].classList.remove("active");
+      li[index].classList.add("active");
+      p.innerHTML = descriptions[index];
+      i = index + 1;
+      if (i === 3) {
+        next.innerHTML = "Finish";
+      } else {
+        next.innerHTML = "Next";
+      }
+    });
+  });
+
+  const interval = setInterval(() => {
+    if (interrupted || i === 3) {
+      clearInterval(interval);
+    } else {
+      next.click();
+    }
+  }, 6000);
+
+  const close = mapGuide.querySelector(".close")!;
+  close.addEventListener("click", () => {
+    onClose();
+  });
+
+  function onClose() {
+    localStorage.setItem("watched-map-guide", "true");
+    body.style.overflow = "auto";
+    mapGuide.style.display = "none";
+  }
+
+  function hasClosed() {
+    body.style.overflow = "hidden";
+    return localStorage.getItem("watched-map-guide") === "true";
+  }
+
+  if (hasClosed()) {
+    onClose();
+  }
+</script>
+<style lang="scss">
+  .guide {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: var(--background-light);
+    border-radius: 10px;
+    overflow: hidden;
+    .close {
+      div {
+        background-color: #151414;
+      }
+    }
+    .gif {
+      width: 600px;
+      height: 300px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .header {
+      margin: 1rem;
+      text-transform: uppercase;
+    }
+    .description {
+      display: flex;
+      flex-direction: row;
+      ol {
+        margin-bottom: 64px;
+        margin-left: 1rem;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.5rem;
+      }
+      p {
+        position: absolute;
+        right: 12px;
+        width: 60%;
+      }
+    }
+    .next {
+      background-color: rgb(var(--color));
+      color: rgb(var(--background));
+      border: none;
+      text-transform: uppercase;
+      border-radius: 10px;
+      padding: 0.5rem 2rem;
+      margin: 1rem;
+      cursor: pointer;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    ol {
+      counter-reset: item;
+      list-style-type: none;
+      li {
+        color: grey;
+        &.active {
+          color: rgb(var(--color));
+        }
+        button {
+          cursor: pointer;
+          &::before {
+            content: counter(item) ") ";
+            counter-increment: item;
+          }
+        }
+      }
+    }
+  }
+</style>

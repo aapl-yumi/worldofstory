@@ -1,0 +1,26 @@
+.remove-max-min-wh {
+  max-width: none;
+  max-height: none;
+  min-width: none;
+  min-height: none;
+}
+
+.capture {
+  width: 1080px;
+  height: 1350px;
+
+  .modal-image {
+    height: 575px;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .modal-body {
+    max-height: 350px;
+    overflow: hidden;
+  }
+
+  *::first-letter {
+    font-size: revert;
+  }
+}

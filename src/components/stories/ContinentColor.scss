@@ -1,0 +1,32 @@
+.continent {
+  padding: 4px 8px;
+  background-color: #fff4bb;
+  color: #000;
+  text-transform: uppercase;
+  z-index: 10;
+  white-space: nowrap;
+
+  &.europe {
+    background-color: #96cccf;
+  }
+
+  &.asia {
+    background-color: #ffdddd;
+  }
+
+  &.africa {
+    background-color: #fff4bb;
+  }
+
+  &.northamerica {
+    background-color: #fecba6;
+  }
+
+  &.southamerica {
+    background-color: #fecba6;
+  }
+
+  &.oceania {
+    background-color: #b9cef6;
+  }
+}

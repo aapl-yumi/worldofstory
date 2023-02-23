@@ -1,0 +1,172 @@
+---
+import CollaborationCard from "../components/CollaborationCard.astro";
+import Header from "../components/Header.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Share Stories"
+  description={"Send dreams and stories to inspire."}
+>
+  <main>
+    <div
+      style="margin: auto; background-color: var(--background-light); float: left;"
+      class="cover"
+    >
+      <Header
+        title="Share Stories"
+        description="Now it’s your turn to share your story! Don’t be shy, big or small, all dreams are precious. Tell us how you want to shape the future!."
+        nobg={true}
+      />
+      <img
+        style="width: 100%;"
+        src="/assets/images/cover.min.png"
+        alt="18 Diverse Individuals"
+      />
+      <a
+        href="https://forms.gle/Ktvd9Pou31KfkeUF6"
+        class="button gradient-button"
+        id="apply-btn"
+      >
+        Send your story
+      </a>
+      <a
+        href="https://forms.gle/Ktvd9Pou31KfkeUF6"
+        class="button apply-btn-sticky"
+        id="apply-btn-sticky gradient-button"
+      >
+        Send<br /> your<br /> story
+      </a>
+    </div>
+    <svg
+      viewBox="0 0 1440 81"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style="width: 100%; float: left;"
+    >
+      <path
+        d="M1069.47 80.1272C1214.91 84.9216 1343.9 68.7659 1440 60.7931V0H0V40.0636V62.4375C24.9025 55.9928 100.764 48.5394 175.989 36.8744C269.506 22.373 320 22.0368 407.5 22.0368C495 22.0368 594 24.8956 687.5 37.125C781 49.3544 800.223 53.2188 844.847 60.7931C889.471 68.3674 980.04 77.1791 1069.47 80.1272Z"
+        fill="var(--background-light)"></path>
+    </svg>
+    <Header
+      title="Collaborate"
+      description="Join our community of dreamers and collaborate with us!"
+      nobg={true}
+    />
+    <div class="card-container">
+      <CollaborationCard
+        num="1"
+        title="Book"
+        hook="Share your dreams and passions in a book"
+        description="Those who are selected for our website stories will automatically become candidates to be listed as one of representatives for their country, and be candidates to be featured in a book . We currently publish in English and Japanese, but we are planning to expand in other languages as well."
+        image="Stacked WE HAVE A DREAM Books"
+      />
+      <CollaborationCard
+        num="2"
+        title="Documentary"
+        hook="Share your dreams and passion in a documentary"
+        description="In collaboration with Discovery Channel, those who are selected for our website stories  will automatically become candidates to be featured in a documentary."
+        image="WE HAVE A DREAM Documentary on Screen"
+        flipped={true}
+      />
+      <CollaborationCard
+        num="3"
+        title="School"
+        hook="Share your dreams and inspire the next generations"
+        description="Those who are selected for our website stories will have opportunities to teach a classroom at schools and inspire next generations. We are currently teaching at Japanese schools, but we are planning to expand to other countries in the world."
+        image="People in a Classroom"
+      />
+      <CollaborationCard
+        num="4"
+        title="Event"
+        hook="Share your dreams and passion at events"
+        description="Those who are selected for our website stories will have opportunities to become speakers at events. There have been dreamers in the past who inspired many at events joined by over 2000 people, and been featured by the Financial Times."
+        image="Image of a Seminar"
+        flipped={true}
+      />
+      <CollaborationCard
+        num="5"
+        title="Exhibition"
+        hook="Share your dreams and passion at exhibitions"
+        description="Those who are selected for our website stories will have opportunities to have their portrait and stories to be showcased at exhibitions."
+        image="Image of exhibition of WE HAVE A DREAM Book"
+      />
+      <CollaborationCard
+        num="6"
+        title="Lead Local"
+        hook="Inspire youths who visit your country"
+        description="We value meeting in person when possible. You may have opportunities to guide and teach leadership to youths who visit your country."
+        image="Doctor and a Girl at Local Hospital"
+        flipped={true}
+      />
+      <CollaborationCard
+        num="7"
+        title="Community"
+        hook="Connect with dreamers"
+        description="Join our community of over xx and connect with fellow dreamers all around the world."
+        image="Grid Image of People From Around the World"
+      />
+    </div>
+  </main>
+</MainLayout>
+<script is:inline>
+  let applyBtn = document.getElementById("apply-btn-sticky");
+  const coverObserver = new IntersectionObserver((entries) => {
+    entries.forEach(
+      (entry) => {
+        if (entry.isIntersecting) {
+          applyBtn.classList.remove("sticky");
+        } else {
+          applyBtn.classList.add("sticky");
+        }
+      },
+      { threshold: [1] }
+    );
+  });
+  coverObserver.observe(document.querySelector(".cover"));
+</script>
+<style>
+  main {
+    margin: auto;
+  }
+  .cover {
+    padding: 0 10vw;
+    padding-bottom: 30px;
+  }
+  .card-container {
+    width: 100%;
+    float: left;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+  .button {
+    background-color: rgb(var(--accent));
+    color: white;
+    text-decoration: none;
+    padding: 16px 1em;
+    float: right;
+    border-radius: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 50px;
+  }
+  .apply-btn-sticky {
+    display: none;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px 20px;
+    border-radius: 50%;
+  }
+  .sticky {
+    display: block;
+    position: fixed;
+    bottom: 60px;
+    right: 10%;
+    z-index: 100;
+  }
+  @media screen and (max-width: 768px) {
+    .card-container {
+      width: 100%;
+    }
+  }
+</style>

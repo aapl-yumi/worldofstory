@@ -1,0 +1,93 @@
+.story-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: var(--background-light);
+  box-shadow: 3px 3px 3px rgba(170, 170, 170, 0.2);
+  width: 100%;
+  aspect-ratio: 0.8;
+  background-position: center top;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  cursor: pointer;
+
+  &.capture {
+    width: 400px;
+    box-shadow: none;
+  }
+
+  span {
+    display: none;
+  }
+
+  .continent {
+    position: absolute;
+    top: 0;
+    left: 12px;
+  }
+
+  .dreamer-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    aspect-ratio: 1;
+    position: relative;
+
+    .dreamer {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .bio {
+    padding: 10px 0;
+    font-size: 20px;
+    width: 100%;
+    background: var(--story-card-background);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    .inbook {
+      position: absolute;
+      top: 0;
+      transform: translateY(-80%);
+      right: 4px;
+      width: 20%;
+      height: auto;
+      aspect-ratio: 1;
+      background-color: #00819B;
+      padding: 2px;
+      border-radius: 50%;
+    }
+
+    img {
+      height: 24px;
+      margin: 5px 16px 5px 10px;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .country {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 16px;
+      text-align: left;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

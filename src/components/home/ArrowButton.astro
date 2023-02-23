@@ -1,0 +1,27 @@
+---
+import { Icon } from "@iconify/react";
+
+interface Props {
+  link: string;
+  label: string;
+}
+
+const { link, label } = Astro.props;
+---
+
+<a
+  href={link}
+  class="flex flex-row items-center justify-end text-inherit text-lg w-full no-underline my-5"
+>
+  <span>{label}</span>
+  <Icon
+    client:idle
+    icon="material-symbols:line-end-arrow"
+    style={{
+      marginLeft: "7px",
+      width: "24px",
+      height: "24px",
+      color: "inherit",
+    }}
+  />
+</a>
