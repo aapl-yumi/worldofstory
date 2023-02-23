@@ -109,6 +109,21 @@ export default function StoryModal({
     return response;
   };
 
+  const onShareClick = () => {
+    // copy link to clipboard
+    const link = `https://worldofstory.worldroad.org/stories?id=${story.id}`;
+    navigator.clipboard.writeText(link);
+  };
+
+  const onDownloadClick = () => {
+    setIsDownloadImageCreating(true);
+    createDownloadableImages();
+    setTimeout(() => {
+      setIsDownloadImageCreating(false);
+    }, 1000);
+    setDownloadModalIsOpen(true);
+  };
+
   const download = () => {
     const storyCardCanvas = storyCardDownloadRef.current
       ?.firstChild as HTMLCanvasElement;
@@ -123,15 +138,6 @@ export default function StoryModal({
     link.download = "full-page.png";
     link.href = fullPageImg;
     link.click();
-  };
-
-  const onDownloadClick = () => {
-    setIsDownloadImageCreating(true);
-    createDownloadableImages();
-    setTimeout(() => {
-      setIsDownloadImageCreating(false);
-    }, 1000);
-    setDownloadModalIsOpen(true);
   };
 
   const createDownloadableImages = () => {
@@ -296,6 +302,7 @@ export default function StoryModal({
                 aria-label="Share"
                 size="large"
                 className="flex flex-col items-center justify-center"
+                onClick={onShareClick}
               >
                 <Icon
                   icon="mdi:share"
