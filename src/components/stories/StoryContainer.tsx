@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import StoryCard, { Story } from "./StoryCard";
 import StoryModal from "./StoryModal";
-import { Skeleton } from "@mui/material";
 
 export default function StoryContainer({
   stories,

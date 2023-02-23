@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ThemeProvider } from "@emotion/react";
-import ClickAwayListener from "@mui/base/ClickAwayListener";
 import { createTheme } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 
@@ -11,7 +10,6 @@ import Map from "./Map";
 import SearchBox from "./SearchBox";
 import ShowCount from "./ShowCount";
 import StoryContainer from "./StoryContainer";
-import StoryModal from "./StoryModal";
 import UsePagination from "./UsePagination";
 
 import type { Story } from "./StoryCard";

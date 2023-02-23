@@ -63,6 +63,8 @@ export default function StoryModal({
     const thisStoryLoved = localStorage.getItem(cacheId + "-love-" + story.id);
     if (thisStoryLoved === "true") {
       setIsLoved(true);
+    } else {
+      setIsLoved(false);
     }
   };
 
