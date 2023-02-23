@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from "react";
 
-import { GoogleMap, Polygon, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Polygon, useLoadScript } from "@react-google-maps/api";
 
-import countries from './country.json';
-import MapZoomButtons from './MapZoomButtons';
+import countries from "./country.json";
+import MapZoomButtons from "./MapZoomButtons";
 
 import type { Search } from "./MapAndStories";
 const center = { lat: 26.6, lng: -14.75 };
@@ -15,16 +15,18 @@ export default function Map({
   search: Search;
   setSearch: (search: Search) => void;
 }) {
+  const [zoom, setZoom] = useState(2);
+
   const { isLoaded, loadError, url } = useLoadScript({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyCygqZsRbwZWT1bG0ihIkuOe4ZhlronUOI",
   });
 
   const handleZoomIn = () => {
-    console.log("zoom in");
+    setZoom(zoom + 1);
   };
   const handleZoomOut = () => {
-    console.log("zoom out");
+    setZoom(zoom - 1);
   };
 
   const onCountryClick = (country: any) => {
@@ -42,7 +44,7 @@ export default function Map({
             id="map"
             mapContainerStyle={{ width: "100%", height: "100%" }}
             center={center}
-            zoom={2}
+            zoom={zoom}
             options={{
               disableDefaultUI: true,
               mapId: "cfdc1dc59fd233b6",
