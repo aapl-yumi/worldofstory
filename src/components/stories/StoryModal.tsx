@@ -110,7 +110,6 @@ export default function StoryModal({
   };
 
   const onShareClick = () => {
-    // copy link to clipboard
     const link = `https://worldofstory.worldroad.org/stories?id=${story.id}`;
     navigator.clipboard.writeText(link);
   };
