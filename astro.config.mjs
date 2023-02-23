@@ -19,6 +19,6 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://worldofstory.worldroad.org/",
+  site: "https://story.worldroad.org/",
   integrations: [tailwind(), partytown(), sitemap(), preact(), react()],
 });
