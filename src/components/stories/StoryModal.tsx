@@ -129,14 +129,20 @@ export default function StoryModal({
       ?.firstChild as HTMLCanvasElement;
     const fullPageCanvas = fullPageDownloadRef.current
       ?.firstChild as HTMLCanvasElement;
+    const shareStoriesCanvas = shareStoriesDownloadRef.current
+      ?.firstChild as HTMLCanvasElement;
     const storyCardImg = storyCardCanvas.toDataURL("image/png");
     const fullPageImg = fullPageCanvas.toDataURL("image/png");
+    const shareStoriesImg = shareStoriesCanvas.toDataURL("image/png");
     const link = document.createElement("a");
-    link.download = "story-card.png";
+    link.download = story.id + "-story-card.png";
     link.href = storyCardImg;
     link.click();
-    link.download = "full-page.png";
+    link.download = story.id + "-full-page.png";
     link.href = fullPageImg;
+    link.click();
+    link.download = "share-stories.png";
+    link.href = shareStoriesImg;
     link.click();
   };
 
@@ -474,7 +480,7 @@ export default function StoryModal({
           aria-labelledby="Download modal"
           aria-describedby="Download the story as images on your device"
         >
-          <div className="fixed w-[80%] h-full top-0 left-1/2 -translate-x-1/2 bg-[var(--download-modal-background)] pt-32 flex justify-center flex-col text-center">
+          <div className="fixed w-[80%] h-full top-0 left-1/2 -translate-x-1/2 bg-[var(--download-modal-background)] pt-32 pb-10 flex justify-center flex-col text-center">
             <div className="absolute right-5 top-5">
               <CloseButton onClick={() => setDownloadModalIsOpen(false)} />
             </div>
@@ -484,7 +490,7 @@ export default function StoryModal({
                 Share these images on social media or according to your needs!
               </h2>
             </div>
-            <div className="flex flex-col gap-4 justify-center vertical-scroll h-full">
+            <div className="flex flex-col gap-4 items-center justify-start vertical-scroll h-full">
               {isDownloadImageCreating && (
                 <CircularProgress className="absolute top-1/2 left-1/2" />
               )}
@@ -498,6 +504,7 @@ export default function StoryModal({
                   margin: "0 auto",
                 }}
               ></div>
+              <p className="text-xl">Story Card</p>
               <div
                 ref={fullPageDownloadRef}
                 style={{
@@ -508,6 +515,7 @@ export default function StoryModal({
                   margin: "0 auto",
                 }}
               ></div>
+              <p className="text-xl">Full Story</p>
               <div
                 ref={shareStoriesDownloadRef}
                 style={{
@@ -518,6 +526,7 @@ export default function StoryModal({
                   margin: "0 auto",
                 }}
               ></div>
+              <p className="text-xl">Share Stories!</p>
             </div>
             <Button
               variant="contained"
@@ -528,7 +537,7 @@ export default function StoryModal({
                 borderRadius: "10px",
                 width: "min-content",
               }}
-              className="absolute left-1/2 bottom-4 -translate-x-1/2"
+              className="absolute left-1/2 -bottom-2 -translate-x-1/2"
             >
               Download
             </Button>
