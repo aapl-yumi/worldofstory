@@ -3,16 +3,10 @@ import "./StoryModal.scss";
 
 import html2canvas from "html2canvas";
 import { DateTime } from "luxon";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Icon } from "@iconify/react";
-import {
-  Button,
-  CircularProgress,
-  Grid,
-  IconButton,
-  Modal,
-} from "@mui/material";
+import { Button, CircularProgress, IconButton, Modal } from "@mui/material";
 
 import CategoryChip from "./CategoryChip";
 import CloseButton from "./CloseButton";
@@ -42,10 +36,10 @@ export default function StoryModal({
   const storyModalCategoryRef = useRef<HTMLDivElement>(null);
   const storyModalConnectRef = useRef<HTMLDivElement>(null);
   const storyModalOverLayerRef = useRef<HTMLDivElement>(null);
-  const downloadModalRef = useRef<HTMLDivElement>(null);
   const storyCardDownloadRef = useRef<HTMLDivElement>(null);
   const fullPageDownloadRef = useRef<HTMLDivElement>(null);
   const shareStoriesDownloadRef = useRef<HTMLDivElement>(null);
+  const shareStoriesImageRef = useRef<HTMLImageElement>(null);
   let cacheId = localStorage.getItem("cacheId") as string;
 
   useEffect(() => {
@@ -114,10 +108,6 @@ export default function StoryModal({
   };
 
   const download = () => {
-    const storyCard = document.getElementById(
-      "story-" + story.id
-    ) as HTMLDivElement;
-    const fullPage = storyModalRef.current as HTMLDivElement;
     const storyCardCanvas = storyCardDownloadRef.current
       ?.firstChild as HTMLCanvasElement;
     const fullPageCanvas = fullPageDownloadRef.current
@@ -145,7 +135,7 @@ export default function StoryModal({
   const createDownloadableImages = () => {
     createStoryCardCanvas();
     createFullPageCanvas();
-    // make canvas from image
+    createShareImageCanvas();
   };
 
   const createStoryCardCanvas = () => {
@@ -209,10 +199,8 @@ export default function StoryModal({
 
   const createShareImageCanvas = () => {
     // make image to canvas
-    const shareImage = shareStoriesDownloadRef.current
-      ?.firstChild as HTMLImageElement;
-    shareImage.style.display = "block";
-    html2canvas(shareImage, {
+    shareStoriesImageRef.current!.style.display = "block";
+    html2canvas(shareStoriesImageRef.current!, {
       backgroundColor: null,
       useCORS: true,
     }).then((canvas) => {
@@ -220,6 +208,7 @@ export default function StoryModal({
       canvas.style.height = "auto";
       shareStoriesDownloadRef.current?.appendChild(canvas);
     });
+    shareStoriesImageRef.current!.style.display = "none";
   };
 
   const randomId = (n: number = 16) => {
@@ -241,6 +230,14 @@ export default function StoryModal({
           className="vertical-scroll story-modal fixed top-0 left-1/2 -translate-x-1/2 pt-10 px-14 max-md:px-5 max-h-full w-[99vw] max-md:w-full max-w-[1000px] bg-[rgb(var(--story-background))] text-black"
           ref={storyModalRef}
         >
+          <img
+            ref={shareStoriesImageRef}
+            src="/assets/images/share-your-story.min.png"
+            alt="Share stories"
+            style={{
+              display: "none",
+            }}
+          />
           <div
             className="absolute top-4 right-4"
             ref={storyModalCloseButtonRef}
@@ -468,7 +465,7 @@ export default function StoryModal({
           aria-labelledby="Download modal"
           aria-describedby="Download the story as images on your device"
         >
-          <div className="fixed w-[80%] h-full top-0 left-1/2 -translate-x-1/2 bg-[var(--download-modal-background)] pt-10 flex justify-center flex-col text-center">
+          <div className="fixed w-[80%] h-full top-0 left-1/2 -translate-x-1/2 bg-[var(--download-modal-background)] pt-32 flex justify-center flex-col text-center">
             <div className="absolute right-5 top-5">
               <CloseButton onClick={() => setDownloadModalIsOpen(false)} />
             </div>
@@ -511,15 +508,7 @@ export default function StoryModal({
                   alignItems: "center",
                   margin: "0 auto",
                 }}
-              >
-                <img
-                  src="/assets/images/share-your-story.min.png"
-                  alt="Share stories"
-                  style={{
-                    display: "none",
-                  }}
-                />
-              </div>
+              ></div>
             </div>
             <Button
               variant="contained"

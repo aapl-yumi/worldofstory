@@ -19,7 +19,6 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://aapl-yumi.github.io/worldofstory-beta",
-  base: "/worldofstory-beta",
+  site: "https://worldofstory.worldroad.org/",
   integrations: [tailwind(), partytown(), sitemap(), preact(), react()],
 });
