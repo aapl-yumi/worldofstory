@@ -1,10 +1,10 @@
-import './ShowCount.scss';
+import "./ShowCount.scss";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { Modal } from '@mui/material';
+import { Modal } from "@mui/material";
 
-import CloseButton from './CloseButton';
+import CloseButton from "./CloseButton";
 
 export default function ShowCount({ count }: { count: number }) {
   const [openAboutTheContentModal, setOpenAboutTheContentModal] =
@@ -36,14 +36,16 @@ export default function ShowCount({ count }: { count: number }) {
         onBackdropClick={() => setOpenAboutTheContentModal(false)}
         aria-labelledby="About the content"
         aria-describedby="Notice about the contents on this website"
-        role="presentation"
       >
-        <div className="fixed w-[500px] max-h-[95vh] max-w-[95vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-16 px-6 rounded-lg bg-[var(--background-light)]">
+        <div
+          role="presentation"
+          className="fixed vertical-scroll w-[500px] max-h-[95vh] max-w-[95vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-16 px-6 rounded-lg bg-[var(--background-light)]"
+        >
           <div className="absolute top-4 right-4">
             <CloseButton onClick={() => setOpenAboutTheContentModal(false)} />
           </div>
           <h1 className="text-2xl text-center mb-4">About the content</h1>
-          <div className="vertical-scroll h-full w-full about-the-content">
+          <div className="h-full w-full about-the-content">
             <p>
               *1 United Nations (UN) member countries follow the notation of the
               UN, while non-member countries follow International Olympic

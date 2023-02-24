@@ -479,11 +479,11 @@ export default function StoryModal({
           aria-labelledby="Download modal"
           aria-describedby="Download the story as images on your device"
         >
-          <div className="fixed w-[80%] h-full top-0 left-1/2 -translate-x-1/2 bg-[var(--download-modal-background)] pt-32 pb-10 flex justify-center flex-col text-center">
+          <div className="fixed w-[80%] max-md:w-full h-full top-0 left-1/2 -translate-x-1/2 bg-[var(--download-modal-background)] pt-32 pb-14 flex justify-center flex-col text-center">
             <div className="absolute right-5 top-5">
               <CloseButton onClick={() => setDownloadModalIsOpen(false)} />
             </div>
-            <div className="absolute left-1/2 top-5 -translate-x-1/2">
+            <div className="absolute left-1/2 top-5 -translate-x-1/2 pb-4 max-md:w-full max-md:px-4">
               <h1 className="font-bold text-2xl">Download</h1>
               <h2 className="text-xl my-5">
                 Share these images on social media or according to your needs!
@@ -525,7 +525,7 @@ export default function StoryModal({
                   margin: "0 auto",
                 }}
               ></div>
-              <p className="text-xl">Share Stories!</p>
+              <p className="text-xl pb-10">Share Stories!</p>
             </div>
             <Button
               variant="contained"

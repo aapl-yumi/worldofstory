@@ -1,6 +1,6 @@
 import "./FilterModal.scss";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { Button, Checkbox, FormControlLabel, Modal } from "@mui/material";
 
@@ -32,9 +32,19 @@ export default function FilterModal({
   setTags: (tags: Tag[]) => void;
 }) {
   const [continents, setContinents] = useState<any[]>(continentsDefault);
+  const scrollForMoreRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     setFromSearch();
+
+    // if scroll is at the top, show scroll for more
+    if (scrollForMoreRef.current) {
+      if (scrollForMoreRef.current.scrollTop === 0) {
+        scrollForMoreRef.current.style.display = "block";
+      } else {
+        scrollForMoreRef.current.style.display = "none";
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -231,6 +241,7 @@ export default function FilterModal({
             src="/assets/images/scrollformore.min.png"
             alt="Scroll for more"
             className="absolute bottom-5 right-5 h-32 w-auto z-index-0"
+            ref={scrollForMoreRef}
           />
         </div>
         <div className="filter-option-buttons mt-4">
