@@ -19,7 +19,7 @@ export default function Map({
 
   const { isLoaded, loadError, url } = useLoadScript({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyCygqZsRbwZWT1bG0ihIkuOe4ZhlronUOI",
+    googleMapsApiKey: import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY,
   });
 
   const handleZoomIn = () => {
