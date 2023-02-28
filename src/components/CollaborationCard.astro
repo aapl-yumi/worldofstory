@@ -13,7 +13,7 @@ const { num, title, hook, description, image, flipped } = Astro.props;
 
 <div class={"card " + (flipped ? "flipped" : "")}>
   <div class="image">
-    <img src={"/assets/images/share/" + num + ".min.png"} alt={image} />
+    <img src={"/assets/images/share/" + num + ".min.webp"} alt={image} />
   </div>
   <p class="num">0{num}</p>
   <div class="details">
@@ -51,7 +51,7 @@ const { num, title, hook, description, image, flipped } = Astro.props;
     left: 0;
     font-size: 180px;
     font-weight: 700;
-    color: #e0dede;
+    color: #cac8c8;
   }
   .flipped .num {
     transform: translateX(105%);
@@ -84,7 +84,7 @@ const { num, title, hook, description, image, flipped } = Astro.props;
   }
   @media (prefers-color-scheme: dark) {
     .num {
-      color: #2a2828;
+      color: #4c4949;
     }
   }
   @media screen and (max-width: 768px) {

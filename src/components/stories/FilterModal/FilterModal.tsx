@@ -1,10 +1,10 @@
-import './FilterModal.scss';
+import "./FilterModal.scss";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
-import CloseButton from '@components/stories/CloseButton';
-import { defaultSearch, Search, Tag } from '@components/stories/MapAndStories';
-import { Button, Checkbox, FormControlLabel, Modal } from '@mui/material';
+import CloseButton from "@components/stories/CloseButton";
+import { defaultSearch, Search, Tag } from "@components/stories/MapAndStories";
+import { Button, Checkbox, FormControlLabel, Modal } from "@mui/material";
 
 export const continentsDefault = [
   { name: "Africa", code: "af", checked: false },
@@ -237,7 +237,7 @@ export default function FilterModal({
             ))}
           </div>
           <img
-            src="/assets/images/scrollformore.min.png"
+            src="/assets/images/scrollformore.min.webp"
             alt="Scroll for more"
             className="absolute bottom-5 right-5 h-32 w-auto z-index-0"
             ref={scrollForMoreRef}

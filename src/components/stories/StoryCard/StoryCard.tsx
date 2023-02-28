@@ -1,5 +1,5 @@
-import './StoryCard.scss';
-import '@components/stories/ContinentColor.scss';
+import "./StoryCard.scss";
+import "@components/stories/ContinentColor.scss";
 
 export interface Story {
   id: string;
@@ -54,7 +54,7 @@ export default function StoryCard({
       <div className="bio">
         <div className="country">
           <img
-            src={"/assets/images/countries/" + story.countrycode + ".png"}
+            src={"/assets/images/countries/" + story.countrycode + ".webp"}
             alt={"Flag of " + story.country}
           />
           <p className="country">{story.country}</p>
@@ -67,7 +67,7 @@ export default function StoryCard({
         <p className="text-sm">- {story.name}</p>
         {story.inbook == "TRUE" ? (
           <img
-            src="/assets/images/featured-in-book.min.png"
+            src="/assets/images/featured-in-book.min.webp"
             alt="Featured in book"
             className="inbook"
           />

@@ -8,35 +8,37 @@ import MainLayout from "@layouts/MainLayout.astro";
   title="Share Stories"
   description={"Send dreams and stories to inspire."}
 >
-  <main>
+  <main class="w-full">
     <div
       style="margin: auto; background-color: var(--background-light); float: left;"
-      class="cover"
+      class="cover w-full"
     >
       <Header
         title="Share Stories"
         description="Now it’s your turn to share your story! Don’t be shy, big or small, all dreams are precious. Tell us how you want to shape the future!."
         nobg={true}
       />
-      <img
-        style="width: 100%;"
-        src="/assets/images/cover.min.png"
-        alt="18 Diverse Individuals"
-      />
-      <a
-        href="https://forms.gle/Ktvd9Pou31KfkeUF6"
-        class="button gradient-button"
-        id="apply-btn"
-      >
-        Send your story
-      </a>
-      <a
-        href="https://forms.gle/Ktvd9Pou31KfkeUF6"
-        class="button apply-btn-sticky"
-        id="apply-btn-sticky gradient-button"
-      >
-        Send<br /> your<br /> story
-      </a>
+      <div class="w-[85%] max-md:w-full max-md:px-5 max-w-screen-md mx-auto">
+        <img
+          style="width: 100%;"
+          src="/assets/images/cover.min.webp"
+          alt="18 Diverse Individuals"
+        />
+        <a
+          href="https://forms.gle/Ktvd9Pou31KfkeUF6"
+          class="button gradient-button"
+          id="apply-btn"
+        >
+          Send your story
+        </a>
+        <a
+          href="https://forms.gle/Ktvd9Pou31KfkeUF6"
+          class="button apply-btn-sticky"
+          id="apply-btn-sticky gradient-button"
+        >
+          Send<br /> your<br /> story
+        </a>
+      </div>
     </div>
     <svg
       viewBox="0 0 1440 81"
@@ -53,7 +55,9 @@ import MainLayout from "@layouts/MainLayout.astro";
       description="Join our community of dreamers and collaborate with us!"
       nobg={true}
     />
-    <div class="card-container">
+    <div
+      class="card-container w-[85%] max-md:w-full max-md:px-5 max-w-screen-xl mx-auto"
+    >
       <CollaborationCard
         num="1"
         title="Book"
@@ -134,8 +138,6 @@ import MainLayout from "@layouts/MainLayout.astro";
     padding-bottom: 30px;
   }
   .card-container {
-    width: 100%;
-    float: left;
     padding-left: 10vw;
     padding-right: 10vw;
   }

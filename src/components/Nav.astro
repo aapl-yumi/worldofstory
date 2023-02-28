@@ -3,10 +3,10 @@ import FooterSocials from "@components/FooterSocials.astro";
 import LanguageSelector from "@components/LanguageSelector";
 ---
 
-<div class="nav">
+<nav class="nav">
   <ul class="left">
     <li>
-      <a rel="prefetch" href="/">
+      <a rel="prefetch" href="/" aria-label="Home page">
         <div class="logo-container">
           <img
             src="/assets/images/nav-logo.min.png"
@@ -24,33 +24,49 @@ import LanguageSelector from "@components/LanguageSelector";
     <li>
       <LanguageSelector client:load />
       <li>
-        <a rel="prefetch" href="/stories">Read<br /> Stories</a>
+        <a
+          rel="prefetch"
+          href="/stories"
+          aria-label="Read all the dream storeis from all over the world"
+          >Read<br /> Stories</a
+        >
       </li>
       <li>
-        <a rel="prefetch" href="/share">Share<br /> Stories</a>
+        <a
+          rel="prefetch"
+          href="/share"
+          aria-label="Share your stories with the world">Share<br /> Stories</a
+        >
       </li>
       <li>
-        <a rel="prefetch" href="/team">Team</a>
+        <a rel="prefetch" href="/team" aria-label="See our team">Team</a>
       </li>
       <li>
-        <a rel="prefetch" href="/supporters">Supporters</a>
+        <a rel="prefetch" href="/supporters" aria-label="See our supporters"
+          >Supporters</a
+        >
       </li>
       <li>
-        <a rel="prefetch" href="/contact" class="contact">Contact</a>
+        <a
+          rel="prefetch"
+          href="/contact"
+          class="contact"
+          aria-label="Contact us">Contact</a
+        >
       </li>
       <li class="socials">
         <FooterSocials />
       </li>
     </li>
   </ul>
-</div>
-<div class="mobile-nav">
+</nav>
+<nav class="mobile-nav">
   <div class="logos">
     <div class="logo-container">
-      <img src="/assets/images/nav-logo.min.png" alt="WORLDROAD Inc. Logo" />
-      <img src="/assets/images/nav-logo-text.min.png" alt="WE HAVE A DREAM" />
+      <img src="/assets/images/nav-logo.min.webp" alt="WORLDROAD Inc. Logo" />
+      <img src="/assets/images/nav-logo-text.min.webp" alt="WE HAVE A DREAM" />
     </div>
-    <a rel="prefetch" href="/">World of Story</a>
+    <a rel="prefetch" href="/" aria-label="Home page">World of Story</a>
   </div>
   <div class="hamburger">
     <div class="line1"></div>
@@ -58,7 +74,7 @@ import LanguageSelector from "@components/LanguageSelector";
     <div class="line3"></div>
     <p>Menu</p>
   </div>
-</div>
+</nav>
 <script>
   document
     .querySelectorAll('.nav a[href="' + new URL(document.URL).pathname + '"]')

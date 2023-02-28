@@ -246,7 +246,7 @@ export default function StoryModal({
         >
           <img
             ref={shareStoriesImageRef}
-            src="/assets/images/share-your-story.min.png"
+            src="/assets/images/share-your-story.min.webp"
             alt="Share stories"
             style={{
               display: "none",
@@ -278,7 +278,7 @@ export default function StoryModal({
               />
               {story.inbook == "TRUE" ? (
                 <img
-                  src="/assets/images/featured-in-book.min.png"
+                  src="/assets/images/featured-in-book.min.webp"
                   alt="Featured in the book"
                   className="absolute bottom-2 right-2 h-20 w-20"
                 />
@@ -338,7 +338,9 @@ export default function StoryModal({
               <div className="flex items-center justify-start flex-row">
                 <p className="text-2xl">{story.country}</p>
                 <img
-                  src={"/assets/images/countries/" + story.countrycode + ".png"}
+                  src={
+                    "/assets/images/countries/" + story.countrycode + ".webp"
+                  }
                   alt={"Flag of " + story.country}
                   className="h-8 w-auto ml-4"
                   style={{
@@ -392,6 +394,7 @@ export default function StoryModal({
                       icon="dashicons:admin-site-alt3"
                       className="text-4xl"
                       style={{ color: "#000" }}
+                      aria-labal="Visit this dreamer's website"
                     />
                   </a>
                 ) : null}
@@ -401,6 +404,7 @@ export default function StoryModal({
                       icon="mdi:facebook"
                       className="text-4xl"
                       style={{ color: "#000" }}
+                      aria-label="Visit this dreamer's Facebook page"
                     />
                   </a>
                 ) : null}
@@ -410,6 +414,7 @@ export default function StoryModal({
                       icon="ph:instagram-logo-fill"
                       className="text-4xl"
                       style={{ color: "#000" }}
+                      aria-label="Visit this dreamer's Instagram page"
                     />
                   </a>
                 ) : null}
@@ -419,6 +424,7 @@ export default function StoryModal({
                       icon="mdi:twitter"
                       className="text-4xl"
                       style={{ color: "#000" }}
+                      aria-label="Visit this dreamer's Twitter page"
                     />
                   </a>
                 ) : null}
@@ -428,6 +434,7 @@ export default function StoryModal({
                       icon="mdi:tiktok"
                       className="text-4xl"
                       style={{ color: "#000" }}
+                      aria-label="Visit this dreamer's TikTok page"
                     />
                   </a>
                 ) : null}
@@ -452,7 +459,7 @@ export default function StoryModal({
           >
             <p className="uppercase text-4xl bold text-[rgb(var(--accent))] absolute right-[18rem] top-[17rem] flex flex-row items-center">
               <img
-                src="/assets/images/light-logo.png"
+                src="/assets/images/light-logo.webp"
                 alt="World of Story logo"
                 style={{
                   height: "4rem",

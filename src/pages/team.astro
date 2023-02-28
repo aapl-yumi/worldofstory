@@ -24,7 +24,7 @@ const teamInfo: TeamCardProps[] = [
     img: "taichi",
     name: "Taichi Ichikawa",
     title:
-      "Founder of WORLD OF STORIES,\nCEO of <a href='https://www.worldroad.org'>WORLD ROAD</a>,\nAuthor of “WE HAVE A DREAM”,\nOne Young World Ambassador,\n<span>Kindness Leadership, Leading Lights,</span>\nDiscovery Channel PROJECT HOPE Host",
+      "Founder of WORLD OF STORIES,\nCEO of <a href='https://www.worldroad.org' aria-labal='Visit our main World Road website'>WORLD ROAD</a>,\nAuthor of “WE HAVE A DREAM”,\nOne Young World Ambassador,\n<span>Kindness Leadership, Leading Lights,</span>\nDiscovery Channel PROJECT HOPE Host",
     message:
       "Hello world! My dream is to build the world into a single school. Hope you enjoy this web space to learn from each other on earth-scale!",
     instagram: "taichi_905",
@@ -56,7 +56,9 @@ const teamInfo: TeamCardProps[] = [
 <MainLayout title="Team" description={"Team and recruit"}>
   <main>
     <Header title="Meet the Team" description="" />
-    <div class="team-recruit">
+    <div
+      class="team-recruit w-[85%] max-md:w-full max-md:px-5 max-w-screen-2xl mx-auto"
+    >
       <div class="left">
         <h2>We're looking for team members</h2>
         <p>
@@ -76,8 +78,9 @@ const teamInfo: TeamCardProps[] = [
         </p>
         <p>
           All of the contributions are voluntarily based. If this sounds like
-          you, please send us a message from the <a href="/contact"
-            >contact page</a
+          you, please send us a message from the <a
+            href="/contact"
+            aria-label="Contact us for contribution">contact page</a
           > :)
         </p>
       </div>
@@ -89,7 +92,9 @@ const teamInfo: TeamCardProps[] = [
         />
       </div>
     </div>
-    <div class="members">
+    <div
+      class="members w-[85%] max-md:w-full max-md:px-5 max-w-screen-md mx-auto"
+    >
       {
         teamInfo.map((member) => {
           return (
