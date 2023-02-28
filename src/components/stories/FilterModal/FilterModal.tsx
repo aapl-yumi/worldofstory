@@ -237,7 +237,7 @@ export default function FilterModal({
             ))}
           </div>
           <img
-            src="/assets/images/scrollformore.min.webp"
+            src="/assets/images/scrollformore.min.png"
             alt="Scroll for more"
             className="absolute bottom-5 right-5 h-32 w-auto z-index-0"
             ref={scrollForMoreRef}
