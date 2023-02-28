@@ -41,7 +41,7 @@ export default function StoryCard({
       id={"story-" + story.id}
       onClick={openModal}
       style={{
-        backgroundImage: `url(/assets/images/dreamers/${story.id}.png)`,
+        backgroundImage: `url(https://api.worldroad.org/dreamers/${story.id}.webp)`,
       }}
     >
       <p

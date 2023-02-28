@@ -158,6 +158,7 @@ export default function StoryModal({
     html2canvas(storyCard, {
       width: storyCard.offsetWidth,
       backgroundColor: null,
+      useCORS: true,
     }).then((canvas) => {
       canvas.style.width = "100%";
       canvas.style.height = "auto";
@@ -272,7 +273,7 @@ export default function StoryModal({
               </p>
               <img
                 className="dreamer max-h-[500px] max-w-[100%]"
-                src={"/assets/images/dreamers/" + story.id + ".png"}
+                src={"https://api.worldroad.org/dreamers/" + story.id + ".webp"}
                 alt="Dreamer Photo"
               />
               {story.inbook == "TRUE" ? (
