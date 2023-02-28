@@ -16,7 +16,10 @@ import preact from "@astrojs/preact";
 import react from "@astrojs/react";
 
 // https://astro.build/config
+import compress from "astro-compress";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://worldofstory.worldroad.org/",
-  integrations: [tailwind(), partytown(), sitemap(), preact(), react()],
+  integrations: [tailwind(), partytown(), sitemap(), preact(), react(), compress()]
 });

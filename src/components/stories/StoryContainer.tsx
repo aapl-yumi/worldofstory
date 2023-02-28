@@ -31,21 +31,23 @@ export default function StoryContainer({
           />
         )}
       </div>
-      <div
-        className={
-          horizontal
-            ? "horizontal-scroll flex flex-row gap-4"
-            : "grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-md:px-3 gap-4"
-        }
-      >
-        {stories.map((story: Story) => (
-          <StoryCard
-            key={story.id}
-            story={story}
-            setSelectedStory={setSelectedStory}
-            setStoryModalIsOpen={setStoryModalIsOpen}
-          />
-        ))}
+      <div className={horizontal ? "horizontal-scroll" : ""}>
+        <div
+          className={
+            horizontal
+              ? "flex flex-row gap-4 max-md:w-[300%]"
+              : "grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-md:px-3 gap-4"
+          }
+        >
+          {stories.map((story: Story) => (
+            <StoryCard
+              key={story.id}
+              story={story}
+              setSelectedStory={setSelectedStory}
+              setStoryModalIsOpen={setStoryModalIsOpen}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
