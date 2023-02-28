@@ -17,9 +17,9 @@ export default function Map({
 }) {
   const [zoom, setZoom] = useState(2);
 
-  const { isLoaded, loadError, url } = useLoadScript({
+  const { isLoaded } = useLoadScript({
     id: "google-map-script",
-    googleMapsApiKey: import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: "AIzaSyCygqZsRbwZWT1bG0ihIkuOe4ZhlronUOI",
   });
 
   const handleZoomIn = () => {
