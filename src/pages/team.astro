@@ -1,7 +1,7 @@
 ---
-import Header from "../components/Header.astro";
-import TeamCard from "../components/TeamCard.astro";
-import MainLayout from "../layouts/MainLayout.astro";
+import Header from "@components/Header.astro";
+import TeamCard from "@components/TeamCard.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 
 interface TeamCardProps {
   flipped?: boolean;
@@ -65,14 +65,20 @@ const teamInfo: TeamCardProps[] = [
           position.
         </p>
         <p>
-          <strong>Content Translator</strong> for either one of the following languages:
+          ・<strong>Content Translator</strong> for either one of the following languages:
+          Japanese, French, Spanish, Your language
           <br />
-          Japanese, French, Spanish, and your language.
+          ・<strong>Regional Curators</strong> who will curate stories and help coordinate
+          for Africa / South America / Caribbean / Asia / Europe, and more regions
+          <br />
+          ・ <strong>Story Editor [English]</strong> who will improve the writing
+          and storytelling
         </p>
         <p>
-          To apply, please send us a message from the <a href="/contact"
+          All of the contributions are voluntarily based. If this sounds like
+          you, please send us a message from the <a href="/contact"
             >contact page</a
-          >.
+          > :)
         </p>
       </div>
       <div class="right">

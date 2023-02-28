@@ -1,4 +1,4 @@
-import "./ContinentColor.scss";
+import "@components/stories/ContinentColor.scss";
 import "./StoryModal.scss";
 
 import html2canvas from "html2canvas";
@@ -8,10 +8,10 @@ import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { Button, CircularProgress, IconButton, Modal } from "@mui/material";
 
-import CategoryChip from "./CategoryChip";
-import CloseButton from "./CloseButton";
+import CategoryChip from "@components/stories/StoryModal/CategoryChip";
+import CloseButton from "@components/stories/CloseButton";
 
-import type { Story } from "./StoryCard";
+import type { Story } from "@components/stories/StoryCard";
 export default function StoryModal({
   open,
   setStoryModalIsOpen,

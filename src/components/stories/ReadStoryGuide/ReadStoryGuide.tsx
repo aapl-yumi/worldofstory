@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import "./ReadStoryGuide.scss";
-import CloseButton from "./CloseButton";
-import { Checkbox, FormControlLabel, Modal } from "@mui/material";
+import './ReadStoryGuide.scss';
+
+import { useEffect, useRef, useState } from 'react';
+
+import CloseButton from '@components/stories/CloseButton';
+import { Checkbox, FormControlLabel, Modal } from '@mui/material';
 
 export default function ReadStoryGuide() {
   const [isOpen, setIsOpen] = useState(false);

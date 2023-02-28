@@ -1,7 +1,7 @@
 import type * as React from "react";
-import { Icon } from '@iconify/react';
-import { styled } from '@mui/material/styles';
-import usePagination from '@mui/material/usePagination';
+import { Icon } from "@iconify/react";
+import { styled } from "@mui/material/styles";
+import usePagination from "@mui/material/usePagination";
 
 const List = styled("ul")({
   listStyle: "none",

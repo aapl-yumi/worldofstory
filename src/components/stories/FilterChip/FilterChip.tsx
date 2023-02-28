@@ -1,7 +1,5 @@
 import './FilterChip.scss';
 
-import React from 'react';
-
 import { Icon } from '@iconify/react';
 
 export interface Filter {

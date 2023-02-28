@@ -1,11 +1,10 @@
-import "./FilterModal.scss";
+import './FilterModal.scss';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 
-import { Button, Checkbox, FormControlLabel, Modal } from "@mui/material";
-
-import CloseButton from "./CloseButton";
-import { defaultSearch, Search, Tag } from "./MapAndStories";
+import CloseButton from '@components/stories/CloseButton';
+import { defaultSearch, Search, Tag } from '@components/stories/MapAndStories';
+import { Button, Checkbox, FormControlLabel, Modal } from '@mui/material';
 
 export const continentsDefault = [
   { name: "Africa", code: "af", checked: false },

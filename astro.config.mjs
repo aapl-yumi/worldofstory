@@ -21,5 +21,12 @@ import compress from "astro-compress";
 // https://astro.build/config
 export default defineConfig({
   site: "https://worldofstory.worldroad.org/",
-  integrations: [tailwind(), partytown(), sitemap(), preact(), react(), compress()]
+  integrations: [
+    tailwind(),
+    partytown(),
+    sitemap(),
+    preact(),
+    react(),
+    compress(),
+  ],
 });

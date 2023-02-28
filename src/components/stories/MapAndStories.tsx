@@ -4,16 +4,16 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress";
 
-import FilterChipContainer from "./FilterChipContainer";
-import FilterModal from "./FilterModal";
-import Map from "./Map";
-import SearchBox from "./SearchBox";
-import ShowCount from "./ShowCount";
-import StoryContainer from "./StoryContainer";
-import UsePagination from "./UsePagination";
+import FilterChipContainer from "@components/stories/FilterChipContainer";
+import FilterModal from "@components/stories/FilterModal";
+import Map from "@components/stories/Map";
+import ReadStoryGuide from "@components/stories/ReadStoryGuide";
+import SearchBox from "@components/stories/SearchBox";
+import ShowCount from "@components/stories/ShowCount";
+import StoryContainer from "@components/stories/StoryContainer";
+import UsePagination from "@components/stories/UsePagination";
 
-import type { Story } from "./StoryCard";
-import ReadStoryGuide from "./ReadStoryGuide";
+import type { Story } from "@components/stories/StoryCard";
 export interface Search {
   country: string;
   continent: string;

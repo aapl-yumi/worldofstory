@@ -8,7 +8,7 @@ import FilterChip from "./FilterChip";
 import { continentsDefault } from "./FilterModal";
 import { defaultSearch, Search, Tag } from "./MapAndStories";
 
-import type { Filter } from "./FilterChip";
+import type { Filter } from "@components/stories/FilterChip";
 
 countries.registerLocale(en);
 

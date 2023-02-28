@@ -1,10 +1,10 @@
-import "./SearchBox.scss";
+import './SearchBox.scss';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Icon } from "@iconify/react";
+import { Icon } from '@iconify/react';
 
-import type { Search } from "./MapAndStories";
+import type { Search } from "@components/stories/MapAndStories";
 
 export default function SearchBox({
   search,

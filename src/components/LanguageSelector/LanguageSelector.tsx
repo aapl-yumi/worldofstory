@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { Popover, Button, ButtonGroup } from "@mui/material";
-import { Icon } from "@iconify/react";
-import "./LanguageSelector.scss";
+import './LanguageSelector.scss';
+
+import { useEffect, useRef, useState } from 'react';
+
+import { Icon } from '@iconify/react';
+import { Button, ButtonGroup, Popover } from '@mui/material';
 
 const languages: {
   langid: string;

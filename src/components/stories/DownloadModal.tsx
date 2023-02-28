@@ -1,5 +1,4 @@
-import html2canvas from 'html2canvas';
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function DownloadModal({
   open,

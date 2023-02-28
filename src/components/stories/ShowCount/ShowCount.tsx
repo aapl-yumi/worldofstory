@@ -1,10 +1,9 @@
-import "./ShowCount.scss";
+import './ShowCount.scss';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Modal } from "@mui/material";
-
-import CloseButton from "./CloseButton";
+import CloseButton from '@components/stories/CloseButton';
+import { Modal } from '@mui/material';
 
 export default function ShowCount({ count }: { count: number }) {
   const [openAboutTheContentModal, setOpenAboutTheContentModal] =

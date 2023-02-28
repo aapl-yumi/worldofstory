@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 
 export default function CloseButton({ onClick }: { onClick: () => void }) {
   return (

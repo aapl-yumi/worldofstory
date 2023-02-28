@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import type { Story } from "../stories/StoryCard";
-import StoryContainer from "../stories/StoryContainer";
+import { useEffect, useState } from 'react';
 
+import StoryContainer from '../stories/StoryContainer';
+
+import type { Story } from "../stories/StoryCard";
 export default function TeamPick() {
   const [stories, setStories] = useState<Story[]>([]);
 
