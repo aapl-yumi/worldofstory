@@ -281,6 +281,9 @@ export default function StoryModal({
                   src="/assets/images/featured-in-book.min.webp"
                   alt="Featured in the book"
                   className="absolute bottom-2 right-2 h-20 w-20"
+                  style={{
+                    borderRadius: "50%",
+                  }}
                 />
               ) : null}
               {story.photocredit ? (
