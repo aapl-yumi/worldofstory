@@ -134,10 +134,10 @@ export default function StoryModal({
     const fullPageImg = fullPageCanvas.toDataURL("image/png");
     const shareStoriesImg = shareStoriesCanvas.toDataURL("image/png");
     const link = document.createElement("a");
-    link.download = story.name.replaceAll(/\s+/, "-") + "-story-card.png";
+    link.download = story.name.replaceAll(/\s+/g, "-") + "-story-card.png";
     link.href = storyCardImg;
     link.click();
-    link.download = story.name.replaceAll(/\s+/, "-") + "-full-page.png";
+    link.download = story.name.replaceAll(/\s+/g, "-") + "-full-page.png";
     link.href = fullPageImg;
     link.click();
     link.download = "share-stories.png";
