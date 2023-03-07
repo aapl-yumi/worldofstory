@@ -462,7 +462,7 @@ export default function StoryModal({
           >
             <p className="uppercase text-4xl bold text-[rgb(var(--accent))] absolute right-[18rem] top-[17rem] flex flex-row items-center">
               <img
-                src="/assets/images/light-logo.webp"
+                src="/assets/images/light-logo.png"
                 alt="World of Story logo"
                 style={{
                   height: "4rem",

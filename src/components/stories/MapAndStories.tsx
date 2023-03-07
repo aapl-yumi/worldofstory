@@ -38,7 +38,6 @@ export const defaultSearch = () => {
 
 export default function MapAndStories() {
   const [stories, setStories] = useState<Story[]>([]);
-  const [selectedStory, setSelectedStory] = useState<Story | null>(null);
   const [search, setSearch] = useState<Search>(defaultSearch());
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
