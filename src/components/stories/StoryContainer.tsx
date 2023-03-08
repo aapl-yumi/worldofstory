@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import StoryCard, { Story } from "@components/stories/StoryCard";
-import StoryModal from "@components/stories/StoryModal";
+import StoryCard, { Story } from '@components/stories/StoryCard';
+import StoryModal from '@components/stories/StoryModal';
 
 export default function StoryContainer({
   stories,

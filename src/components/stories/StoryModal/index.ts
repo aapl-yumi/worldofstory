@@ -1,3 +1,3 @@
-import StoryModal from "./StoryModal";
+import StoryModal from './StoryModal';
 
 export default StoryModal;

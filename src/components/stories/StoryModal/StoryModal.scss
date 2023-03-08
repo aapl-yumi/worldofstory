@@ -5,9 +5,72 @@
   min-height: none;
 }
 
+.overlay {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-capture,
+.image-capture-2 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 500px;
+  width: 500px;
+
+  img.dreamer {
+    display: none;
+  }
+
+  .overlay {
+    display: block;
+  }
+}
+
+.image-capture {
+
+  .overlay-story,
+  .overlay-title-2 {
+    display: none;
+  }
+
+  .overlay-qrcode {
+    background-color: rgb(var(--accent));
+
+    svg {
+      color: white;
+    }
+  }
+}
+
+.image-capture-2 {
+  .overlay {
+    background: linear-gradient(0deg, rgba(0, 129, 155, 0.73), rgba(0, 129, 155, 0.73))
+  }
+
+  .overlay-title,
+  .overlay-country,
+  .overlay-author {
+    display: none;
+  }
+
+  .overlay-qrcode {
+    background-color: transparent;
+
+    svg {
+      color: white;
+    }
+  }
+}
+
 .capture {
   width: 1080px;
-  height: 1350px;
+  height: 1080px;
 
   .modal-image {
     height: 575px;

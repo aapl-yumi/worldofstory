@@ -3,13 +3,13 @@ import "./StoryModal.scss";
 
 import html2canvas from "html2canvas";
 import { DateTime } from "luxon";
+import QRCode from "react-qr-code";
 import { useEffect, useRef, useState } from "react";
 
+import CloseButton from "@components/stories/CloseButton";
+import CategoryChip from "@components/stories/StoryModal/CategoryChip";
 import { Icon } from "@iconify/react";
 import { Button, CircularProgress, IconButton, Modal } from "@mui/material";
-
-import CategoryChip from "@components/stories/StoryModal/CategoryChip";
-import CloseButton from "@components/stories/CloseButton";
 
 import type { Story } from "@components/stories/StoryCard";
 export default function StoryModal({
@@ -29,14 +29,15 @@ export default function StoryModal({
   const storyModalRef = useRef<HTMLDivElement>(null);
   const storyModalCloseButtonRef = useRef<HTMLDivElement>(null);
   const storyModalImageRef = useRef<HTMLDivElement>(null);
+  const storyModalDreamerImageContainterRef = useRef<HTMLDivElement>(null);
   const storyModalShareRef = useRef<HTMLDivElement>(null);
   const storyModalHeaderRef = useRef<HTMLDivElement>(null);
   const storyModalBodyRef = useRef<HTMLDivElement>(null);
   const storyModalFooterRef = useRef<HTMLDivElement>(null);
   const storyModalCategoryRef = useRef<HTMLDivElement>(null);
   const storyModalConnectRef = useRef<HTMLDivElement>(null);
-  const storyModalOverLayerRef = useRef<HTMLDivElement>(null);
   const storyCardDownloadRef = useRef<HTMLDivElement>(null);
+  const dreamerImageTwoRef = useRef<HTMLDivElement>(null);
   const fullPageDownloadRef = useRef<HTMLDivElement>(null);
   const shareStoriesDownloadRef = useRef<HTMLDivElement>(null);
   const shareStoriesImageRef = useRef<HTMLImageElement>(null);
@@ -126,16 +127,22 @@ export default function StoryModal({
   const download = () => {
     const storyCardCanvas = storyCardDownloadRef.current
       ?.firstChild as HTMLCanvasElement;
+    const dreamerImageTwoCanvas = dreamerImageTwoRef.current
+      ?.firstChild as HTMLCanvasElement;
     const fullPageCanvas = fullPageDownloadRef.current
       ?.firstChild as HTMLCanvasElement;
     const shareStoriesCanvas = shareStoriesDownloadRef.current
       ?.firstChild as HTMLCanvasElement;
     const storyCardImg = storyCardCanvas.toDataURL("image/png");
+    const dreamerImageTwoImg = dreamerImageTwoCanvas.toDataURL("image/png");
     const fullPageImg = fullPageCanvas.toDataURL("image/png");
     const shareStoriesImg = shareStoriesCanvas.toDataURL("image/png");
     const link = document.createElement("a");
-    link.download = story.name.replaceAll(/\s+/g, "-") + "-story-card.png";
+    link.download = story.name.replaceAll(/\s+/g, "-") + "-card-1.png";
     link.href = storyCardImg;
+    link.click();
+    link.download = story.name.replaceAll(/\s+/g, "-") + "-card-2.png";
+    link.href = dreamerImageTwoImg;
     link.click();
     link.download = story.name.replaceAll(/\s+/g, "-") + "-full-page.png";
     link.href = fullPageImg;
@@ -146,9 +153,49 @@ export default function StoryModal({
   };
 
   const createDownloadableImages = () => {
-    createStoryCardCanvas();
+    // createStoryCardCanvas();
+    createDreamerImage();
+    createDremerImageTwo();
     createFullPageCanvas();
     createShareImageCanvas();
+  };
+
+  const createDreamerImage = () => {
+    let imageContainer = storyModalDreamerImageContainterRef.current!;
+    imageContainer.classList.add("image-capture");
+    let image = storyModalImageRef.current!.querySelector(
+      ".dreamer"
+    ) as HTMLImageElement;
+    imageContainer.style.backgroundImage = `url(${image.src})`;
+    html2canvas(imageContainer, {
+      backgroundColor: null,
+      useCORS: true,
+    }).then((canvas) => {
+      canvas.style.width = "100%";
+      canvas.style.height = "auto";
+      storyCardDownloadRef.current?.appendChild(canvas);
+    });
+    imageContainer.classList.remove("image-capture");
+    imageContainer.style.backgroundImage = "none";
+  };
+
+  const createDremerImageTwo = () => {
+    let imageContainer = storyModalDreamerImageContainterRef.current!;
+    imageContainer.classList.add("image-capture-2");
+    let image = storyModalImageRef.current!.querySelector(
+      ".dreamer"
+    ) as HTMLImageElement;
+    imageContainer.style.backgroundImage = `url(${image.src})`;
+    html2canvas(imageContainer, {
+      backgroundColor: null,
+      useCORS: true,
+    }).then((canvas) => {
+      canvas.style.width = "100%";
+      canvas.style.height = "auto";
+      dreamerImageTwoRef.current?.appendChild(canvas);
+    });
+    imageContainer.classList.remove("image-capture-2");
+    imageContainer.style.backgroundImage = "none";
   };
 
   const createStoryCardCanvas = () => {
@@ -172,7 +219,6 @@ export default function StoryModal({
     const elementsToHide = [
       storyModalCloseButtonRef,
       storyModalShareRef,
-      storyModalCategoryRef,
       storyModalConnectRef,
     ];
     elementsToHide.forEach((element) => {
@@ -183,8 +229,6 @@ export default function StoryModal({
     const horScroll =
       storyModalCategoryRef.current?.querySelector(".horizontal-scroll");
     horScroll?.classList.remove("horizontal-scroll");
-
-    storyModalOverLayerRef.current!.style.display = "block";
 
     fullPage.classList.add("capture");
     fullPage.classList.add("remove-max-min-wh");
@@ -204,8 +248,6 @@ export default function StoryModal({
 
     fullPage.classList.add("vertical-scroll");
     horScroll?.classList.add("horizontal-scroll");
-
-    storyModalOverLayerRef.current!.style.display = "none";
 
     fullPage.classList.remove("capture");
     fullPage.classList.remove("remove-max-min-wh");
@@ -271,11 +313,75 @@ export default function StoryModal({
               >
                 {story.continent}
               </p>
-              <img
-                className="dreamer max-h-[500px] max-w-[100%]"
-                src={"https://api.worldroad.org/dreamers/" + story.id + ".webp"}
-                alt="Dreamer Photo"
-              />
+              <div
+                className="dreamer-container relative"
+                ref={storyModalDreamerImageContainterRef}
+              >
+                <img
+                  className="dreamer max-h-[500px] max-w-[100%]"
+                  src={
+                    "https://api.worldroad.org/dreamers/" + story.id + ".webp"
+                  }
+                  alt="Dreamer Photo"
+                />
+                <div className="overlay">
+                  <div className="overlay-country absolute left-5 top-5">
+                    <img
+                      src={
+                        "/assets/images/countries/" +
+                        story.countrycode +
+                        ".webp"
+                      }
+                      alt={"Flag of " + story.country}
+                      className="w-20 h-auto"
+                    />
+                    <p className="text-xs text-white w-full text-center">
+                      {story.country}
+                    </p>
+                  </div>
+                  <p className="absolute uppercase right-5 top-8 font-serif bold text-center text-white">
+                    World
+                    <br /> of
+                    <br /> Story
+                  </p>
+                  <p className="overlay-title absolute left-5 bottom-16 bg-white text-[rgb(var(--accent))] font-serif text-xl font-bold px-1 text-center">
+                    {story.title.split(" ").length > 12
+                      ? story.title.split(" ").slice(0, 12).join(" ") + "..."
+                      : story.title}
+                  </p>
+                  <div className="w-44 absolute bottom-5 left-5 text-white text-center  text-xl">
+                    <p className="overlay-title-2 bg-white px-1 text-[rgb(var(--accent))] uppercase font-bold p-1">
+                      {story.title.split(" ").length > 6
+                        ? story.title.split(" ").slice(0, 6).join(" ") + "..."
+                        : story.title}
+                    </p>
+                    <p className="overlay-story font-serif">
+                      “
+                      {story.story.split(" ").length > 20
+                        ? story.story.split(" ").slice(0, 20).join(" ") + "..."
+                        : story.story}
+                      ”
+                    </p>
+                    <p className="overlay-author-country text-xs font-sans">
+                      - {story.name} from {story.country}
+                    </p>
+                  </div>
+                  <p className="overlay-author absolute left-8 bottom-5 bg-white text-[rgb(var(--accent))] font-serif text-xl bold px-1 text-center">
+                    - {story.name}
+                  </p>
+                  <div className="overlay-qrcode uppercase absolute right-4 bottom-4 pb-4 block rounded-sm p-2">
+                    <QRCode
+                      value="https://worldofstory.worldroad.org"
+                      size={75}
+                      bgColor="transparent"
+                      fgColor="white"
+                    />
+                    <p className="text-[10px] absolute w-full bottom-1 left-1/2 -translate-x-1/2 text-white whitespace-nowrap text-center">
+                      Read Stories
+                    </p>
+                  </div>
+                </div>
+              </div>
               {story.inbook == "TRUE" ? (
                 <img
                   src="/assets/images/featured-in-book.min.webp"
@@ -299,6 +405,7 @@ export default function StoryModal({
                 size="large"
                 onClick={() => loveStory()}
                 className="flex flex-col items-center justify-center"
+                disableRipple
               >
                 <Icon
                   icon={isLoved ? "mdi:heart" : "ph:heart"}
@@ -312,6 +419,7 @@ export default function StoryModal({
                 size="large"
                 className="flex flex-col items-center justify-center"
                 onClick={onShareClick}
+                disableRipple
               >
                 <Icon
                   icon="mdi:share"
@@ -325,6 +433,7 @@ export default function StoryModal({
                 size="large"
                 onClick={() => onDownloadClick()}
                 className="flex flex-col items-center justify-center"
+                disableRipple
               >
                 <Icon
                   icon="material-symbols:download-rounded"
@@ -444,42 +553,6 @@ export default function StoryModal({
               </div>
             </div>
           </div>
-          <div
-            ref={storyModalOverLayerRef}
-            style={{
-              display: "none",
-              position: "absolute",
-              bottom: "0",
-              left: "0",
-              transform: "translate(-50%, 50%)",
-              width: "1571px",
-              height: "1400px",
-              backgroundColor: "rgb(var(--story-background))",
-              background:
-                "linear-gradient(180deg, rgba(254, 253, 247, 0) 0%, #FEFDF7 11.98%)",
-              borderRadius: "100%",
-            }}
-          >
-            <p className="uppercase text-4xl bold text-[rgb(var(--accent))] absolute right-[18rem] top-[17rem] flex flex-row items-center">
-              <img
-                src="/assets/images/light-logo.png"
-                alt="World of Story logo"
-                style={{
-                  height: "4rem",
-                  marginRight: "1rem",
-                }}
-              />
-              World of Story
-            </p>
-            <div
-              className="absolute right-[10rem] top-[26rem]"
-              style={{ fontWeight: "bold", fontSize: "2rem" }}
-            >
-              <p className="">Please visit</p>
-              <p className="underline">https://worldofstory.worldroad.org/</p>
-              <p className="w-full text-right">to read the full story</p>
-            </div>
-          </div>
         </div>
       </Modal>
       {isDownloadModalOpen && (
@@ -514,7 +587,17 @@ export default function StoryModal({
                   margin: "0 auto",
                 }}
               ></div>
-              <p className="text-xl">Story Card</p>
+              {/* <p className="text-xl">Story Card</p> */}
+              <div
+                ref={dreamerImageTwoRef}
+                style={{
+                  width: "240px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  margin: "0 auto",
+                }}
+              ></div>
               <div
                 ref={fullPageDownloadRef}
                 style={{
@@ -525,7 +608,7 @@ export default function StoryModal({
                   margin: "0 auto",
                 }}
               ></div>
-              <p className="text-xl">Full Story</p>
+              {/* <p className="text-xl">Full Story</p> */}
               <div
                 ref={shareStoriesDownloadRef}
                 style={{
@@ -536,7 +619,7 @@ export default function StoryModal({
                   margin: "0 auto",
                 }}
               ></div>
-              <p className="text-xl pb-10">Share Stories!</p>
+              {/* <p className="text-xl pb-10">Share Stories!</p> */}
             </div>
             <Button
               variant="contained"

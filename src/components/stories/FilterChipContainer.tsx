@@ -1,12 +1,12 @@
-import countries from "i18n-iso-countries";
-import en from "i18n-iso-countries/langs/en.json";
-import React, { useEffect, useState } from "react";
+import countries from 'i18n-iso-countries';
+import en from 'i18n-iso-countries/langs/en.json';
+import React, { useEffect, useState } from 'react';
 
-import { Icon } from "@iconify/react";
+import { Icon } from '@iconify/react';
 
-import FilterChip from "./FilterChip";
-import { continentsDefault } from "./FilterModal";
-import { defaultSearch, Search, Tag } from "./MapAndStories";
+import FilterChip from './FilterChip';
+import { continentsDefault } from './FilterModal';
+import { defaultSearch, Search, Tag } from './MapAndStories';
 
 import type { Filter } from "@components/stories/FilterChip";
 

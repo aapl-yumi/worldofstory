@@ -1,5 +1,5 @@
-import "./StoryCard.scss";
-import "@components/stories/ContinentColor.scss";
+import './StoryCard.scss';
+import '@components/stories/ContinentColor.scss';
 
 export interface Story {
   id: string;

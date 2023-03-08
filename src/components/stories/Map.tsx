@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { GoogleMap, Polygon, useLoadScript } from "@react-google-maps/api";
-
-import countries from "@components/stories/country.json";
-import MapZoomButtons from "@components/stories/MapZoomButtons";
+import countries from '@components/stories/country.json';
+import MapZoomButtons from '@components/stories/MapZoomButtons';
+import { GoogleMap, Polygon, useLoadScript } from '@react-google-maps/api';
 
 import type { Search } from "@components/stories/MapAndStories";
 const center = { lat: 26.6, lng: -14.75 };
