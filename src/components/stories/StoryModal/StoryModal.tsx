@@ -339,7 +339,12 @@ export default function StoryModal({
                       {story.country}
                     </p>
                   </div>
-                  <p className="absolute uppercase right-5 top-8 font-serif bold text-center text-white">
+                  <p
+                    className="absolute uppercase right-5 top-8 font-serif bold text-center text-white"
+                    style={{
+                      boxShadow: "0px 4px 10px 0px #00000066",
+                    }}
+                  >
                     World
                     <br /> of
                     <br /> Story
@@ -366,7 +371,7 @@ export default function StoryModal({
                       - {story.name} from {story.country}
                     </p>
                   </div>
-                  <p className="overlay-author absolute left-8 bottom-5 bg-white text-[rgb(var(--accent))] font-serif text-xl bold px-1 text-center">
+                  <p className="overlay-author absolute left-8 bottom-5 bg-white text-[rgb(var(--accent))] font-sans text-xl bold px-1 text-center">
                     - {story.name}
                   </p>
                   <div className="overlay-qrcode uppercase absolute right-4 bottom-4 pb-4 block rounded-sm p-2">
