@@ -1,12 +1,12 @@
-import countries from 'i18n-iso-countries';
-import en from 'i18n-iso-countries/langs/en.json';
-import React, { useEffect, useState } from 'react';
+import countries from "i18n-iso-countries";
+import en from "i18n-iso-countries/langs/en.json";
+import React, { useEffect, useState } from "react";
 
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 
-import FilterChip from './FilterChip';
-import { continentsDefault } from './FilterModal';
-import { defaultSearch, Search, Tag } from './MapAndStories';
+import FilterChip from "./FilterChip";
+import { continentsDefault } from "./FilterModal";
+import { defaultSearch, Search, Tag } from "./MapAndStories";
 
 import type { Filter } from "@components/stories/FilterChip";
 
@@ -83,7 +83,7 @@ export default function FilterChipContainer({
       newFilters.unshift({
         type: "continent",
         label: continent?.name || code,
-        code: code,
+        code,
         active: true,
       });
     });
@@ -100,7 +100,7 @@ export default function FilterChipContainer({
       newFilters.unshift({
         type: "tag",
         label: tag?.title || code,
-        code: code,
+        code,
         active: true,
       });
     });
@@ -116,17 +116,17 @@ export default function FilterChipContainer({
       newFilters.unshift({
         type: "country",
         label: countries.getName(code.toLowerCase(), "en") || code,
-        code: code,
+        code,
         active: true,
       });
     });
 
     // sort filters by active
-    newFilters.sort((a, b) => {
-      if (a.active && !b.active) return -1;
-      if (!a.active && b.active) return 1;
-      return 0;
-    });
+    // newFilters.sort((a, b) => {
+    //   if (a.active && !b.active) return -1;
+    //   if (!a.active && b.active) return 1;
+    //   return 0;
+    // });
     setFilters(newFilters);
   }, [search]);
 

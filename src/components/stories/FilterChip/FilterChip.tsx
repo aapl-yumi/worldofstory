@@ -1,6 +1,6 @@
-import './FilterChip.scss';
+import "./FilterChip.scss";
 
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 
 export interface Filter {
   type: "tag" | "country" | "continent";
@@ -24,6 +24,7 @@ export default function FilterChip({
     <button
       onClick={clicked}
       className={filter.active ? "filter-chip active" : "filter-chip"}
+      aria-label={`Filter by ${filter.label}`}
     >
       <span className="capitalize">{filter.label}</span>
       <Icon icon="system-uicons:cross-circle" />

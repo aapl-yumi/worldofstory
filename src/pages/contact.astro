@@ -27,20 +27,22 @@ import MainLayout from "@layouts/MainLayout.astro";
           method="POST"
           id="contact-form"
         >
-          <label for="name">First Name<span>*</span></label>
+          <label for="fname">First Name<span>*</span></label>
           <input
             type="text"
             name="fname"
             placeholder="Your First Name"
             id="fname"
+            autocomplete="given-name"
             required
           />
-          <label for="name">Last Name<span>*</span></label>
+          <label for="lname">Last Name<span>*</span></label>
           <input
             type="text"
             name="lname"
             placeholder="Your Last Name"
             id="lname"
+            autocomplete="family-name"
             required
           />
           <label for="email">Email<span>*</span></label>
@@ -49,9 +51,10 @@ import MainLayout from "@layouts/MainLayout.astro";
             name="email"
             placeholder="Your Email"
             id="email"
+            autocomplete="email"
             required
           />
-          <label for="email"
+          <label for="social-media"
             >WhatsApp / Messenger / Instagram (for faster communication)</label
           >
           <input
@@ -59,12 +62,14 @@ import MainLayout from "@layouts/MainLayout.astro";
             name="social-media"
             placeholder="Your Social Media (e.g. @worlddreamproject)"
             id="social-media"
+            autocomplete="off"
           />
           <label for="message">Message<span>*</span></label>
           <textarea
             name="message"
             placeholder="Your Message"
             id="message"
+            autocomplete="off"
             required></textarea>
           <p><span>*</span>Required Fields</p>
           <button name="submit" type="submit" value="Submit">Send</button>

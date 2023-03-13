@@ -20,7 +20,8 @@ import LanguageSelector from "@components/LanguageSelector";
         WORLD OF STORY</a
       >
     </li>
-  </ul><ul class="right">
+  </ul>
+  <ul class="right">
     <li>
       <LanguageSelector client:load />
       <li>
@@ -28,15 +29,18 @@ import LanguageSelector from "@components/LanguageSelector";
           rel="prefetch"
           href="/stories"
           aria-label="Read all the dream storeis from all over the world"
-          >Read<br /> Stories</a
         >
+          Read<br /> Stories
+        </a>
       </li>
       <li>
         <a
           rel="prefetch"
           href="/share"
-          aria-label="Share your stories with the world">Share<br /> Stories</a
+          aria-label="Share your stories with the world"
         >
+          Share<br /> Stories
+        </a>
       </li>
       <li>
         <a rel="prefetch" href="/team" aria-label="See our team">Team</a>
@@ -68,12 +72,12 @@ import LanguageSelector from "@components/LanguageSelector";
     </div>
     <a rel="prefetch" href="/" aria-label="Home page">World of Story</a>
   </div>
-  <div class="hamburger">
+  <button class="hamburger">
     <div class="line1"></div>
     <div class="line2"></div>
     <div class="line3"></div>
     <p>Menu</p>
-  </div>
+  </button>
 </nav>
 <script>
   document

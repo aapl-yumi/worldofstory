@@ -1,9 +1,9 @@
-import './LanguageSelector.scss';
+import "./LanguageSelector.scss";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import { Icon } from '@iconify/react';
-import { Button, ButtonGroup, Popover } from '@mui/material';
+import { Icon } from "@iconify/react";
+import { Button, ButtonGroup, Popover } from "@mui/material";
 
 const languages: {
   langid: string;
@@ -41,15 +41,8 @@ const languages: {
 export default function LanguageSelector() {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [isOpen, setIsOpen] = useState(false);
-  const [languageIndex, setLanguageIndex] = useState(0);
+  const [languageIndex, setLanguageIndex] = useState(0); // TODO: remove language rotation
   const anchorEl = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLanguageIndex((prev) => (prev + 1) % languages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const onLanguageSelect = (language: string) => {
     const languageObj = languages.find((lang) => lang.langid === language);

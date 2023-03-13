@@ -332,7 +332,7 @@ export default function StoryModal({
                         story.countrycode +
                         ".webp"
                       }
-                      alt={"Flag of " + story.country}
+                      alt={`Flag of ${story.country}`}
                       className="w-20 h-auto"
                     />
                     <p className="text-xs text-white w-full text-center">
@@ -351,7 +351,7 @@ export default function StoryModal({
                   </p>
                   <p className="overlay-title absolute left-5 bottom-16 bg-white text-[rgb(var(--accent))] font-serif text-xl font-bold px-1 text-center">
                     {story.title.split(" ").length > 12
-                      ? story.title.split(" ").slice(0, 12).join(" ") + "..."
+                      ? `${story.title.split(" ").slice(0, 12).join(" ")}...`
                       : story.title}
                   </p>
                   <div className="w-44 absolute bottom-5 left-5 text-white text-center  text-xl">
@@ -437,7 +437,7 @@ export default function StoryModal({
                 aria-label="Download"
                 size="large"
                 onClick={() => onDownloadClick()}
-                className="flex flex-col items-center justify-center"
+                className="flex flex-col items-center justify-center download-button"
                 disableRipple
               >
                 <Icon
@@ -506,52 +506,72 @@ export default function StoryModal({
               <p>Connect with {story.name}</p>
               <div className="flex flex-row justify-start items-center my-3 gap-2">
                 {story.links ? (
-                  <a href={story.links} target="_blank" rel="noreferrer">
+                  <a
+                    href={story.links}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-labal={`Visit ${story.name}'s website, opens in new tab`}
+                  >
                     <Icon
                       icon="dashicons:admin-site-alt3"
                       className="text-4xl"
                       style={{ color: "#000" }}
-                      aria-labal="Visit this dreamer's website"
                     />
                   </a>
                 ) : null}
                 {story.facebook ? (
-                  <a href={story.facebook} target="_blank" rel="noreferrer">
+                  <a
+                    href={story.facebook}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit ${story.name}'s Facebook page, opens in new tab`}
+                  >
                     <Icon
                       icon="mdi:facebook"
                       className="text-4xl"
                       style={{ color: "#000" }}
-                      aria-label="Visit this dreamer's Facebook page"
                     />
                   </a>
                 ) : null}
                 {story.instagram ? (
-                  <a href={story.instagram} target="_blank" rel="noreferrer">
+                  <a
+                    href={story.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit ${story.name}'s Instagram page, opens in new tab`}
+                  >
                     <Icon
                       icon="ph:instagram-logo-fill"
                       className="text-4xl"
                       style={{ color: "#000" }}
-                      aria-label="Visit this dreamer's Instagram page"
                     />
                   </a>
                 ) : null}
                 {story.twitter ? (
-                  <a href={story.twitter} target="_blank" rel="noreferrer">
+                  <a
+                    href={story.twitter}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit ${story.name}'s Twitter page, opens in new tab`}
+                  >
                     <Icon
                       icon="mdi:twitter"
                       className="text-4xl"
                       style={{ color: "#000" }}
-                      aria-label="Visit this dreamer's Twitter page"
                     />
                   </a>
                 ) : null}
                 {story.tiktok ? (
-                  <a href={story.tiktok} target="_blank" rel="noreferrer">
+                  <a
+                    href={story.tiktok}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit ${story.name}'s TikTok page, opens in new tab`}
+                  >
                     <Icon
                       icon="mdi:tiktok"
                       className="text-4xl"
                       style={{ color: "#000" }}
-                      aria-label="Visit this dreamer's TikTok page"
                     />
                   </a>
                 ) : null}
@@ -591,7 +611,7 @@ export default function StoryModal({
                   alignItems: "center",
                   margin: "0 auto",
                 }}
-              ></div>
+              />
               {/* <p className="text-xl">Story Card</p> */}
               <div
                 ref={dreamerImageTwoRef}
@@ -602,7 +622,7 @@ export default function StoryModal({
                   alignItems: "center",
                   margin: "0 auto",
                 }}
-              ></div>
+              />
               <div
                 ref={fullPageDownloadRef}
                 style={{
@@ -612,7 +632,7 @@ export default function StoryModal({
                   alignItems: "center",
                   margin: "0 auto",
                 }}
-              ></div>
+              />
               {/* <p className="text-xl">Full Story</p> */}
               <div
                 ref={shareStoriesDownloadRef}
@@ -623,7 +643,7 @@ export default function StoryModal({
                   alignItems: "center",
                   margin: "0 auto",
                 }}
-              ></div>
+              />
               {/* <p className="text-xl pb-10">Share Stories!</p> */}
             </div>
             <Button
@@ -635,7 +655,7 @@ export default function StoryModal({
                 borderRadius: "10px",
                 width: "min-content",
               }}
-              className="absolute left-1/2 -bottom-2 -translate-x-1/2"
+              className="absolute left-1/2 -bottom-2 -translate-x-1/2 download-button-1"
             >
               Download
             </Button>

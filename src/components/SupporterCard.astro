@@ -5,9 +5,10 @@ export interface Props {
   title: string;
   title2?: string;
   quote: string;
+  youtubeTitle?: string;
 }
 
-const { name, img, title, title2, quote } = Astro.props;
+const { name, img, title, title2, quote, youtubeTitle } = Astro.props;
 
 let isImage = true;
 // check if img is youtube link, if it is then
@@ -21,12 +22,12 @@ if (img.includes("youtube")) {
     isImage ? (
       <img
         src={"/assets/images/supporters/" + img + ".min.webp"}
-        alt={"Photo of" + name}
+        alt={"Photo of " + name}
       />
     ) : (
       <div class="iframe-container">
         <iframe
-          title="YouTube video player"
+          title={youtubeTitle}
           allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
           src={img}

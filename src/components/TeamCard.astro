@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon";
 export interface Props {
   flipped?: boolean;
   img: string;
@@ -43,42 +42,66 @@ const {
     <div class="socials">
       {
         website ? (
-          <a target="_blank" href={website}>
+          <a
+            target="_blank"
+            href={website}
+            aria-label={`Visit ${name}'s website, opens in a new tab'`}
+          >
             <iconify-icon icon="dashicons:admin-site-alt3" />
           </a>
         ) : null
       }
       {
         twitter ? (
-          <a target="_blank" href={"https://twitter.com/" + twitter}>
+          <a
+            target="_blank"
+            href={"https://twitter.com/" + twitter}
+            aria-label={`Visit ${name}'s Twitter, opens in new tab'`}
+          >
             <iconify-icon icon="mdi:twitter" />
           </a>
         ) : null
       }
       {
         facebook ? (
-          <a target="_blank" href={"https://www.facebook.com/" + facebook}>
+          <a
+            target="_blank"
+            href={"https://www.facebook.com/" + facebook}
+            aria-label={`Visit ${name}'s Facebook, opens in new tab'`}
+          >
             <iconify-icon icon="mdi:facebook" />
           </a>
         ) : null
       }
       {
         instagram ? (
-          <a target="_blank" href={"https://www.instagram.com/" + instagram}>
+          <a
+            target="_blank"
+            href={"https://www.instagram.com/" + instagram}
+            aria-label={`Visit ${name}'s Instagram, opens in new tab'`}
+          >
             <iconify-icon icon="ph:instagram-logo-fill" />
           </a>
         ) : null
       }
       {
         linkedin ? (
-          <a target="_blank" href={"https://www.linkedin.com/in/" + linkedin}>
+          <a
+            target="_blank"
+            href={"https://www.linkedin.com/in/" + linkedin}
+            aria-label={`Visit ${name}'s LinkedIn, opens in new tab'`}
+          >
             <iconify-icon icon="ci:linkedin" />
           </a>
         ) : null
       }
       {
         tiktok ? (
-          <a target="_blank" href={"https://www.tiktok.com/@" + tiktok}>
+          <a
+            target="_blank"
+            href={"https://www.tiktok.com/@" + tiktok}
+            aria-label={`Visit ${name}'s TikTok, opens in new tab'`}
+          >
             <iconify-icon icon="ic:baseline-tiktok" />
           </a>
         ) : null

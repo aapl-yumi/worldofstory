@@ -1,9 +1,9 @@
-import './ShowCount.scss';
+import "./ShowCount.scss";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import CloseButton from '@components/stories/CloseButton';
-import { Modal } from '@mui/material';
+import CloseButton from "@components/stories/CloseButton";
+import { Modal } from "@mui/material";
 
 export default function ShowCount({ count }: { count: number }) {
   const [openAboutTheContentModal, setOpenAboutTheContentModal] =
@@ -11,7 +11,7 @@ export default function ShowCount({ count }: { count: number }) {
 
   return (
     <div className="w-full flex items-center justify-between my-4">
-      <span className="text-2xl	font-bold">
+      <span className="text-2xl	font-bold" aria-live="polite">
         {count > 0 ? (
           <>
             Results:{" "}
