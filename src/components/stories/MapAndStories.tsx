@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import FilterChipContainer from '@components/stories/FilterChipContainer';
-import FilterModal from '@components/stories/FilterModal';
-import Map from '@components/stories/Map';
-import ReadStoryGuide from '@components/stories/ReadStoryGuide';
-import SearchBox from '@components/stories/SearchBox';
-import ShowCount from '@components/stories/ShowCount';
-import StoryContainer from '@components/stories/StoryContainer';
-import UsePagination from '@components/stories/UsePagination';
-import { ThemeProvider } from '@emotion/react';
-import { createTheme } from '@mui/material';
-import LinearProgress from '@mui/material/LinearProgress';
+import FilterChipContainer from "@components/stories/FilterChipContainer";
+import FilterModal from "@components/stories/FilterModal";
+import Map from "@components/stories/Map";
+import ReadStoryGuide from "@components/stories/ReadStoryGuide";
+import SearchBox from "@components/stories/SearchBox";
+import ShowCount from "@components/stories/ShowCount";
+import StoryContainer from "@components/stories/StoryContainer";
+import UsePagination from "@components/stories/UsePagination";
+import { ThemeProvider } from "@emotion/react";
+import { createTheme } from "@mui/material";
+import LinearProgress from "@mui/material/LinearProgress";
 
 import type { Story } from "@components/stories/StoryCard";
 export interface Search {
@@ -65,8 +65,10 @@ export default function MapAndStories() {
 
   useEffect(() => {
     setIsLoading(true);
+    const params = new URLSearchParams(window.location.search);
+    const all = params.get("all") ? "?n=999" : "";
     setTimeout(() => {
-      fetch(apiUrl)
+      fetch(apiUrl + all)
         .then((response) => response.json())
         .then((data) => {
           setStories(data);
